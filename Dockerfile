@@ -32,4 +32,4 @@ EXPOSE 10000
 # Command to run the application using Gunicorn.
 # Gunicorn binds to all network interfaces (0.0.0.0)
 # and uses the port specified by Render's $PORT environment variable.
-CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "app:app"]
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT} app:app"]
