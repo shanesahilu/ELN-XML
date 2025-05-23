@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<collection name="Eluate Frac &amp; Pool Prep2" noteSectionCount="0">
+  <collectionType name="Protocol Definition" />
+  <sectionSetView sectionCount="2">
+    <section name="Fractionation Details" active="true">
+      <sectionType name="Protocol Definition" />
+      <object>
+        <field name="Protocol Definition" />
+        <protocol>
+          <protocolVersion version_created="NEW" migrationKey="93166" lastUsedId="41" auditFlag="1" placeholderText="">
+            <table key="1" name="Main Fractionation - Raw Data" version="1" comment="">
+              <field key="35" name="Fraction No" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="3" name="Fraction Volume (L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="5" name="Cummulative Volume (L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="N_2" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="6" name="Fraction CV" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="N_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="Cummulative CV" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A / B">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="3" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="28" />
+                    <parameterField key="31" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="38" name="Fraction Start CV" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="N_14" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="39" name="Fraction End CV" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="N_15" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="7" name="Fraction Start UV" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="7" resultCol="N_11" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="8" name="Fraction End UV" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="8" resultCol="N_10" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="9" name="pH" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="9" resultCol="N_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="10" name="Conductivity (mS/cm)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="10" resultCol="N_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="11" name="Absorbance 280" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="11" resultCol="N_6" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="12" name="Extinction Coefficent" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="12" resultCol="N_7" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="13" name="Fraction Concentration  (g/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="13" resultCol="N_8" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="3" />
+                <calculation key="0" name="Division" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A / B">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="11" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="12" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="14" name="Recovery %" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="14" resultCol="N_9" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="3" />
+                <calculation key="0" name="% Recovery" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="( A * B ) * 100.0 / C">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="13" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="3" />
+                  </parameter>
+                  <parameter name="C">
+                    <parameterFieldTable key="28" />
+                    <parameterField key="32" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="36" name="Pool Name" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="15" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="37" name="Pool Volume (L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="16" resultCol="N_13" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="41" name="ExpId" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="17" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="Conditional" version="1" configurationAddinName="Conditional Calculation" updateNullValuesOnly="false" useProtocolField="1">
+                  <defaultValueFieldTable key="28" />
+                  <defaultValueField key="33" />
+                </calculation>
+              </field>
+              <field key="4" name="Check Box for Pool Creations" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="18" resultCol="N_1" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Yes/No" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="0" />
+              </field>
+            </table>
+            <table key="28" name="Fractionation Details" version="1" comment="">
+              <detailTable key="1" />
+              <field key="33" name="Experiment_Id" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="29" name="UV Based Fractionation" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="">
+                  <picklist name="YES/NO" />
+                </fieldConfiguration>
+              </field>
+              <field key="30" name="Volume Based Fractionation" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="">
+                  <picklist name="YES/NO" />
+                </fieldConfiguration>
+              </field>
+              <field key="31" name="Column Volume (L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="N_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="32" name="Load Protein (g)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="N_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+            </table>
+            <fileImportTemplate key="34" name="Add Row" version="1" comment="" importMode="DataImport">
+              <configdata key="0" configurationAddinName="SqlImportEngine" fileNameDelimiter="" actionOnDataTooLong="0" actionOnBadDataFormat="0" fillNullWithLast="0" silentImport="1" fillMissingKeyValues="0" dataUpdateMode="0" sql="Select ec.Name FROM endb.eln_collections ec&#xD;&#xA;Where section_set_key = %%Collection_key%%">
+                <fileImportMapping mappingOption="Use Column:" mappingValue="Name">
+                  <table key="28" />
+                  <field key="33" />
+                </fileImportMapping>
+                <replicates />
+                <ReturnValues>
+                  <ReturnValue name="Name" dataType="1" />
+                </ReturnValues>
+              </configdata>
+            </fileImportTemplate>
+          </protocolVersion>
+        </protocol>
+      </object>
+    </section>
+    <section name="Fraction Details" active="true">
+      <sectionType name="Protocol Definition" />
+      <object>
+        <field name="Protocol Definition" />
+        <protocol>
+          <protocolVersion version_created="NEW" migrationKey="93167" lastUsedId="28" auditFlag="1" placeholderText="">
+            <table key="1" name="Fraction Details" version="1" comment="">
+              <field key="2" name="Pool Name" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="3" name="Fraction No" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="4" name="Fraction Volume added (L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="N_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="5" name="Experiment_Id" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="13" name="Pool Volume Actual (L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="N_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="14" name="Pool OD280" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="N_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="15" name="Pool Concentration (g/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="7" resultCol="N_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="Division" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A / B">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="14" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="27" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="16" name="Pool Recovery (Perc)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="8" resultCol="N_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="Get" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="( A * B * 100.0 ) / C">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="15" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="13" />
+                  </parameter>
+                  <parameter name="C">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="25" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="17" name="Pool pH" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="9" resultCol="N_6" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="19" name="Pool Cond (mS/cm)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="10" resultCol="N_8" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="20" name="Pool Start CV" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="11" resultCol="N_9" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="21" name="Pool End CV" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="12" resultCol="N_10" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="22" name="Pool Start UV" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="13" resultCol="N_11" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="23" name="Pool End UV" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="14" resultCol="N_12" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="25" name="Load Protein (g)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="15" resultCol="N_13" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="27" name="Extinction Coefficient" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="16" resultCol="N_14" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+              </field>
+              <internalDatasourceDetails key="7" name="&lt;New Internal Datasource&gt;" version="1" sourceDataLocation="0" runOnImport="true" runOnUpdate="true" updateNullValuesOnly="false">
+                <sourceProtocol>
+                  <sourcePath sourceSectionPosition="1" field="Protocol Definition">
+                    <collection key="783593">
+                      <section key="3984546">
+                        <object key="146">
+                          <tag />
+                        </object>
+                      </section>
+                    </collection>
+                  </sourcePath>
+                </sourceProtocol>
+                <internalDSParameter key="9" name="" version="1" useProtocolField="true">
+                  <sourceField>
+                    <table key="1" />
+                    <field key="41" />
+                  </sourceField>
+                  <paramValue />
+                  <parameterFieldTable key="1" />
+                  <parameterField key="5" />
+                </internalDSParameter>
+                <internalDSReturnValue key="10" name="" version="1">
+                  <sourceField>
+                    <table key="1" />
+                    <field key="36" />
+                  </sourceField>
+                  <returnValueFieldTable key="1" />
+                  <returnValueField key="2" />
+                </internalDSReturnValue>
+                <internalDSReturnValue key="12" name="" version="1">
+                  <sourceField>
+                    <table key="1" />
+                    <field key="35" />
+                  </sourceField>
+                  <returnValueFieldTable key="1" />
+                  <returnValueField key="3" />
+                </internalDSReturnValue>
+                <internalDSReturnValue key="26" name="" version="1">
+                  <sourceField>
+                    <table key="28" />
+                    <field key="32" />
+                  </sourceField>
+                  <returnValueFieldTable key="1" />
+                  <returnValueField key="25" />
+                </internalDSReturnValue>
+              </internalDatasourceDetails>
+            </table>
+            <fileImportTemplate key="6" name="Add Row" version="1" comment="" importMode="DataImport">
+              <configdata key="0" configurationAddinName="SqlImportEngine" fileNameDelimiter="" actionOnDataTooLong="0" actionOnBadDataFormat="0" fillNullWithLast="0" silentImport="1" fillMissingKeyValues="0" dataUpdateMode="0" sql="Select ec.Name FROM endb.eln_collections ec&#xD;&#xA;Where section_set_key = %%Collection_key%%">
+                <fileImportMapping mappingOption="Use Column:" mappingValue="Name">
+                  <table key="1" />
+                  <field key="5" />
+                </fileImportMapping>
+                <replicates />
+                <ReturnValues>
+                  <ReturnValue name="Name" dataType="1" />
+                </ReturnValues>
+              </configdata>
+            </fileImportTemplate>
+          </protocolVersion>
+        </protocol>
+      </object>
+    </section>
+  </sectionSetView>
+</collection>

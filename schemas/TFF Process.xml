@@ -1,0 +1,530 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<collection name="TFF Process" noteSectionCount="0">
+  <collectionType name="Protocol Definition" />
+  <sectionSetView sectionCount="3">
+    <section name="TFF-EQB Phase" active="true">
+      <sectionType name="Protocol Definition" />
+      <object>
+        <field name="Protocol Definition" />
+        <protocol>
+          <protocolVersion version_created="NEW" migrationKey="96968" lastUsedId="20" auditFlag="1" placeholderText="">
+            <table key="1" name="TFF –EQB phase" version="1" comment="">
+              <field key="18" name="Experiment_Id" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="2" name="Buffer / Solution Name " version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="3" name="Buffer / Solution ID" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="4" name="Buffer Volume passed (L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="N_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="19" name="Area used (m2)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="N_14" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="5" name="Buffer Throughput (L/m2)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="N_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="get" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A / B">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="4" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="19" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="6" name="Pump Speed" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="7" resultCol="N_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="20" name="Pump Speed UOM" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="8" resultCol="T_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="">
+                  <picklist name="Pump Speed UOM" />
+                </fieldConfiguration>
+              </field>
+              <field key="7" name="Pin (psi)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="9" resultCol="N_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="8" name="Pret (psi)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="10" resultCol="N_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="9" name="TMP (psi) " version="1" comment="" requireValue="false" allowDependent="false" sortOrder="11" resultCol="N_6" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="0" />
+                <calculation key="0" name="TMP" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="( A + B ) / 2.0">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="7" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="8" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="10" name="Delta P (psi)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="12" resultCol="N_7" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="Subtraction" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A - B">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="7" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="8" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="11" name="Buffer pH" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="13" resultCol="N_8" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="12" name="Buffer Conductivity (mS/cm)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="14" resultCol="N_9" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="13" name="Permeate pH" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="15" resultCol="N_10" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="14" name="Permeate Cond. (mS/cm)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="16" resultCol="N_11" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="15" name="Retentate pH" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="17" resultCol="N_12" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="16" name="Retentate Cond. (mS/cm)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="18" resultCol="N_13" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+            </table>
+            <fileImportTemplate key="17" name="Add Row" version="1" comment="" importMode="DataImport">
+              <configdata key="0" configurationAddinName="SqlImportEngine" fileNameDelimiter="" actionOnDataTooLong="0" actionOnBadDataFormat="0" fillNullWithLast="0" silentImport="1" fillMissingKeyValues="0" dataUpdateMode="0" sql="Select ec.Name FROM endb.eln_collections ec&#xD;&#xA;Where section_set_key = %%Collection_key%%">
+                <fileImportMapping mappingOption="Use Column:" mappingValue="Name">
+                  <table key="1" />
+                  <field key="18" />
+                </fileImportMapping>
+                <replicates />
+                <ReturnValues>
+                  <ReturnValue name="Name" dataType="1" />
+                </ReturnValues>
+              </configdata>
+            </fileImportTemplate>
+          </protocolVersion>
+        </protocol>
+      </object>
+    </section>
+    <section name="TFF-Process" active="true">
+      <sectionType name="Protocol Definition" />
+      <object>
+        <field name="Protocol Definition" />
+        <protocol>
+          <protocolVersion version_created="NEW" migrationKey="96969" lastUsedId="87" auditFlag="1" placeholderText="">
+            <table key="1" name="TFF-Process" version="1" comment="">
+              <detailTable key="43" />
+              <field key="15" name="Load Volume (L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="N_10" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="16" name="Load Concentration (g/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="N_11" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="17" name="Load Total Protein (g)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="N_12" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="Multiplication" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A * B">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="15" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="16" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="41" name="Experiment_Id" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="T_4" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+            </table>
+            <table key="43" name="Processing Details" version="1" comment="">
+              <detailTable key="44" />
+              <field key="74" name="Process Stage" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="">
+                  <picklist name="Process Stage 1" />
+                </fieldConfiguration>
+              </field>
+              <field key="75" name="Start Time (DD/MM/YY; HH:mm)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="D_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="DateTime" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" />
+              </field>
+              <field key="76" name="End Time (DD/MM/YY; HH:mm)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="D_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="DateTime" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" />
+              </field>
+              <field key="77" name="Process Time (min)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="diff" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="FORMATDATETIME ( A - B , &quot;HH:mm.ss&quot; , &quot;false&quot; )">
+                  <parameter name="A">
+                    <parameterFieldTable key="43" />
+                    <parameterField key="76" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="43" />
+                    <parameterField key="75" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="78" name="Area Used (sq.m)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="N_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="87" name="Input Volume (L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="N_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="79" name="Retantate Volume (L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="7" resultCol="N_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="80" name="Load Factor (L/m2)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="8" resultCol="N_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="Multiplication" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A / B">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="15" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="43" />
+                    <parameterField key="78" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="81" name="Retantate Conc (g/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="9" resultCol="N_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="82" name="Load Factor (gm/m2)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="10" resultCol="N_6" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="Multiplication" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="( A * B ) / C">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="15" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="16" />
+                  </parameter>
+                  <parameter name="C">
+                    <parameterFieldTable key="43" />
+                    <parameterField key="78" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="83" name="Target Concentration (g/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="11" resultCol="N_7" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="84" name="Permeate Vol During UF (L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="12" resultCol="N_8" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="3" />
+              </field>
+              <field key="85" name="No of DF" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="13" resultCol="N_9" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="86" name="Permeate Vol During DF (L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="14" resultCol="N_10" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="Permeate Vol DLF" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A * B">
+                  <parameter name="A">
+                    <parameterFieldTable key="43" />
+                    <parameterField key="79" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="43" />
+                    <parameterField key="85" />
+                  </parameter>
+                </calculation>
+              </field>
+            </table>
+            <table key="44" name="TFF Process Data" version="1" comment="">
+              <field key="49" name="TFF Process Stage" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="">
+                  <picklist name="Process Stage 2" />
+                </fieldConfiguration>
+              </field>
+              <field key="50" name="Time (min)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="N_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="51" name="Pin (psi)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="N_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="52" name="Pret (psi)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="N_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="53" name="TMP (psi) " version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="N_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="get" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="( A + B ) / 2.0">
+                  <parameter name="A">
+                    <parameterFieldTable key="44" />
+                    <parameterField key="51" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="44" />
+                    <parameterField key="52" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="54" name="Delta P (psi)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="N_6" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="get" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A - B">
+                  <parameter name="A">
+                    <parameterFieldTable key="44" />
+                    <parameterField key="51" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="44" />
+                    <parameterField key="52" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="55" name="Feed Flow Rate (ml/min)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="7" resultCol="N_7" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="56" name="Permeate Flow Rate (ml/min)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="8" resultCol="N_8" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="57" name="Permeate Volume (L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="9" resultCol="N_9" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="58" name="No. of Diafiltration" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="10" resultCol="N_10" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="59" name="Permeate pH" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="11" resultCol="N_11" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="60" name="Permeate Cond. (mS/cm)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="12" resultCol="N_12" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="61" name="Fold Conc." version="1" comment="" requireValue="false" allowDependent="false" sortOrder="13" resultCol="N_13" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="Fold Conc" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A / ( A - B )">
+                  <parameter name="A">
+                    <parameterFieldTable key="43" />
+                    <parameterField key="87" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="44" />
+                    <parameterField key="57" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="62" name="Calculated Retantate Conc. (g/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="14" resultCol="N_14" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="CalcRetentate Volume" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A / ( B - C )">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="17" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="43" />
+                    <parameterField key="87" />
+                  </parameter>
+                  <parameter name="C">
+                    <parameterFieldTable key="44" />
+                    <parameterField key="57" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="63" name="Feed Flux (LMH)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="15" resultCol="N_15" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="Feed Flux" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="( A * ( 60.0 / 1000.0 ) ) / B">
+                  <parameter name="A">
+                    <parameterFieldTable key="44" />
+                    <parameterField key="55" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="43" />
+                    <parameterField key="78" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="64" name="Permeate Flux (LMH)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="16" resultCol="N_16" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="PermeateFlux" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="( A * ( 60.0 / 1000.0 ) ) / B">
+                  <parameter name="A">
+                    <parameterFieldTable key="44" />
+                    <parameterField key="56" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="43" />
+                    <parameterField key="78" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="65" name="Flux Decay (Perc)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="17" resultCol="N_17" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="FluxDecay" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="( ( FIRST ( A ) - A ) * 100.0 ) / FIRST ( A )">
+                  <parameter name="A">
+                    <parameterFieldTable key="44" />
+                    <parameterField key="64" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="66" name="Permeate A280" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="18" resultCol="N_18" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="67" name="Retantate pH" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="19" resultCol="N_19" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="68" name="Retantate Cond (mS/cm)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="20" resultCol="N_20" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="69" name="Retantate A280" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="21" resultCol="N_21" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="70" name="Extinction Coefficient" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="22" resultCol="N_22" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="71" name="Retentate Conc. (g/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="23" resultCol="N_23" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="get" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A / B">
+                  <parameter name="A">
+                    <parameterFieldTable key="44" />
+                    <parameterField key="69" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="44" />
+                    <parameterField key="70" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="72" name="Retantate Flow Rate (ml/min)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="24" resultCol="N_24" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="73" name="Retantate Flux (LMH)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="25" resultCol="N_25" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="NoFormat" />
+                <calculation key="0" name="get" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="( A * ( 60.0 / 1000.0 ) ) / B">
+                  <parameter name="A">
+                    <parameterFieldTable key="44" />
+                    <parameterField key="72" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="43" />
+                    <parameterField key="78" />
+                  </parameter>
+                </calculation>
+              </field>
+            </table>
+            <fileImportTemplate key="42" name="Add Row" version="1" comment="" importMode="DataImport">
+              <configdata key="0" configurationAddinName="SqlImportEngine" fileNameDelimiter="" actionOnDataTooLong="0" actionOnBadDataFormat="0" fillNullWithLast="0" silentImport="1" fillMissingKeyValues="0" dataUpdateMode="0" sql="Select ec.Name FROM endb.eln_collections ec&#xD;&#xA;Where section_set_key = %%Collection_key%%">
+                <fileImportMapping mappingOption="Use Column:" mappingValue="Name">
+                  <table key="1" />
+                  <field key="41" />
+                </fileImportMapping>
+                <replicates />
+                <ReturnValues>
+                  <ReturnValue name="Name" dataType="1" />
+                </ReturnValues>
+              </configdata>
+            </fileImportTemplate>
+          </protocolVersion>
+        </protocol>
+      </object>
+    </section>
+    <section name="TFF – Flushing &amp; Retrieval process" active="true">
+      <sectionType name="Protocol Definition" />
+      <object>
+        <field name="Protocol Definition" />
+        <protocol>
+          <protocolVersion version_created="NEW" migrationKey="96970" lastUsedId="15" auditFlag="1" placeholderText="">
+            <table key="1" name="Retrival process" version="1" comment="">
+              <field key="14" name="Experiment_Id" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="2" name="Step" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="1" defaultValue="">
+                  <picklist name="Retrival process-Step" />
+                </fieldConfiguration>
+              </field>
+              <field key="3" name="Volume (L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="N_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="4" name="Pin (psi)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="N_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="5" name="Pret (psi)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="N_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="6" name="TMP (psi) " version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="N_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="Avg" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="( A + B ) / 2.0">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="4" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="5" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="7" name="Delta P (psi)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="7" resultCol="N_6" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="Subtraction" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A - B">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="4" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="5" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="8" name="Pump Speed" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="8" resultCol="N_7" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="9" name="Absorbance 280" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="9" resultCol="N_8" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="10" name="Extinction Coefficient" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="10" resultCol="N_9" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="11" name="Conc (gm/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="11" resultCol="N_10" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="Division" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A / B">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="9" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="10" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="12" name="Total protein (g)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="12" resultCol="N_11" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="Multiplication" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A * B">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="11" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="3" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="15" name="Pump Speed UOM" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="13" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="">
+                  <picklist name="Pump Speed UOM" />
+                </fieldConfiguration>
+              </field>
+            </table>
+            <fileImportTemplate key="13" name="Add Row" version="1" comment="" importMode="DataImport">
+              <configdata key="0" configurationAddinName="SqlImportEngine" fileNameDelimiter="" actionOnDataTooLong="0" actionOnBadDataFormat="0" fillNullWithLast="0" silentImport="1" fillMissingKeyValues="0" dataUpdateMode="0" sql="Select ec.Name FROM endb.eln_collections ec&#xD;&#xA;Where section_set_key = %%Collection_key%%">
+                <fileImportMapping mappingOption="Use Column:" mappingValue="Name">
+                  <table key="1" />
+                  <field key="14" />
+                </fileImportMapping>
+                <replicates />
+                <ReturnValues>
+                  <ReturnValue name="Name" dataType="1" />
+                </ReturnValues>
+              </configdata>
+            </fileImportTemplate>
+          </protocolVersion>
+        </protocol>
+      </object>
+    </section>
+  </sectionSetView>
+</collection>

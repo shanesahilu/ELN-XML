@@ -17,7 +17,15 @@ SCHEMA_FILES_CONFIG = {
     "fed_batch_schema": os.path.join(SCHEMA_FOLDER, "FedBatch Conditions-DataCollection-CBD-UBD.xml"),
     "vessel_master_schema": os.path.join(SCHEMA_FOLDER, "Vessel-BatchVolume Master.xml"),
     "sample_prep_schema": os.path.join(SCHEMA_FOLDER, "Sample Preparation.xml"),
-    "seed_train_schema": os.path.join(SCHEMA_FOLDER, "Seed Train-CBD-UBD.xml")
+    "seed_train_schema": os.path.join(SCHEMA_FOLDER, "Seed Train-CBD-UBD.xml"),
+    "pa_feedback_output_schema": os.path.join(SCHEMA_FOLDER, "PA Feedback-Output.xml"),
+    "pa_feedback_input_schema": os.path.join(SCHEMA_FOLDER, "PA Feedback-Input.xml"),
+    "dbc_schema": os.path.join(SCHEMA_FOLDER, "DBC.xml"),
+    "dbd_buffer_prep_schema": os.path.join(SCHEMA_FOLDER, "DBD Buffer Prep.xml"),
+    "eluate_frac_pool_prep2_schema": os.path.join(SCHEMA_FOLDER, "Eluate Frac & Pool Prep2.xml"),
+    "ft_and_ht_schema": os.path.join(SCHEMA_FOLDER, "FT and HT.xml"),
+    "output_schema_definition": os.path.join(SCHEMA_FOLDER, "Output.xml"), # Renamed key slightly to avoid potential conflict if you had an 'output' section name
+    "tff_process_schema": os.path.join(SCHEMA_FOLDER, "TFF Process.xml"),
 }
 
 @app.route('/convert', methods=['POST'])

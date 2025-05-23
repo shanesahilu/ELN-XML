@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<collection name="PA Feedback-Input" noteSectionCount="0">
+  <collectionType name="Protocol Definition" />
+  <sectionSetView sectionCount="1">
+    <section name="PA Feedback-Input" active="true">
+      <sectionType name="Protocol Definition" />
+      <object>
+        <field name="Protocol Definition" />
+        <protocol>
+          <protocolVersion version_created="NEW" migrationKey="93626" lastUsedId="36" auditFlag="1" placeholderText="">
+            <table key="1" name="DBD Input Details" version="1" comment="">
+              <field key="3" name="Source Batch ID " version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="35" name="Sample No" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="T_7" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="4" name="Sample Name (Input)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="">
+                  <picklist name="Feedback Sample Name" />
+                </fieldConfiguration>
+              </field>
+              <field key="5" name="Sample ID (Input)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="36" name="Sample_Qty" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="N_6" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="6" name="Upstream Sample ID " version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="T_4" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="7" name="pH (Input)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="7" resultCol="N_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="8" name="Cond (ms/cm)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="8" resultCol="N_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="9" name="Turbidity&#xA;(NTU)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="9" resultCol="N_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="10" name="Filter details" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="10" resultCol="T_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="11" name="Load Conc (mg/ml)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="11" resultCol="N_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="12" name="Load CV" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="12" resultCol="N_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+            </table>
+            <table key="29" name="Sample Details" version="1" comment="">
+              <detailTable key="1" />
+              <field key="30" name="Sample Id" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_1" isIndexed="false" isKeyCol="true" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="31" name="Request ID" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="32" name="Task Type" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="33" name="Task Id" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="T_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+            </table>
+            <fileImportTemplate key="24" name="GetTaskDetails" version="1" comment="" importMode="DataImport">
+              <configdata key="0" configurationAddinName="SqlImportEngine" fileNameDelimiter="" actionOnDataTooLong="0" actionOnBadDataFormat="0" fillNullWithLast="0" silentImport="1" fillMissingKeyValues="0" dataUpdateMode="0" sql="SELECT MIN(DECODE(ep.name, 'Request Id', TRIM(tc.enteredvalue), NULL)) AS requestid,&#xD;&#xA;  MIN(DECODE(ep.name, 'Sample Id', TRIM(tc.enteredvalue), NULL))       AS sampleid,&#xD;&#xA;  --MIN(DECODE(ep.name, 'Sample Set', TRIM(tc.enteredvalue), NULL))      AS sampleset,&#xD;&#xA;  MIN(DECODE(ep.name, 'Task Id', TRIM(tc.enteredvalue), NULL))      AS taskid,&#xD;&#xA;  MIN(DECODE(ep.name, 'Task Type', TRIM(tc.enteredvalue), NULL))      AS tasktype&#xD;&#xA;&#xD;&#xA;FROM eln_collections c,&#xD;&#xA;  eln_sections s,&#xD;&#xA;  eln_states es,&#xD;&#xA;  eln_table_cells tc,&#xD;&#xA;  eln_table_rows tr,&#xD;&#xA;  eln_table_properties tp,&#xD;&#xA;  eln_fields f,&#xD;&#xA;  eln_properties ep&#xD;&#xA;WHERE s.collection_key  = c.section_set_key&#xD;&#xA;AND s.primary_key       = tr.section_key&#xD;&#xA;AND tc.row_key          = tr.primary_key&#xD;&#xA;AND tc.property_key     = tp.primary_key&#xD;&#xA;AND tp.field_key        = f.primary_key&#xD;&#xA;AND tp.property_key     = ep.primary_key&#xD;&#xA;AND LOWER(f.name)       = 'test data'&#xD;&#xA;AND s.version_deleted  IS NULL&#xD;&#xA;AND tr.version_deleted IS NULL&#xD;&#xA;AND s.section_set_key  &lt;&gt; s.section_type_key&#xD;&#xA;AND c.state_key         = es.primary_key&#xD;&#xA;AND c.section_set_key   = %%collection_key%%&#xD;&#xA;GROUP BY tc.row_key">
+                <fileImportMapping mappingOption="Use Column:" mappingValue="sampleid">
+                  <table key="29" />
+                  <field key="30" />
+                </fileImportMapping>
+                <fileImportMapping mappingOption="Use Column:" mappingValue="requestid">
+                  <table key="29" />
+                  <field key="31" />
+                </fileImportMapping>
+                <fileImportMapping mappingOption="Use Column:" mappingValue="tasktype">
+                  <table key="29" />
+                  <field key="32" />
+                </fileImportMapping>
+                <fileImportMapping mappingOption="Use Column:" mappingValue="taskid">
+                  <table key="29" />
+                  <field key="33" />
+                </fileImportMapping>
+                <replicates />
+                <ReturnValues>
+                  <ReturnValue name="requestid" dataType="1" />
+                  <ReturnValue name="sampleid" dataType="1" />
+                  <ReturnValue name="taskid" dataType="1" />
+                  <ReturnValue name="tasktype" dataType="1" />
+                </ReturnValues>
+              </configdata>
+            </fileImportTemplate>
+            <fileImportTemplate key="34" name="LoadSamples" version="1" comment="" importMode="DataImport">
+              <configdata key="0" configurationAddinName="SqlImportEngine" fileNameDelimiter="" actionOnDataTooLong="0" actionOnBadDataFormat="0" fillNullWithLast="0" silentImport="1" fillMissingKeyValues="0" dataUpdateMode="0" sql="Select St.RDLIMS_SAMPLE_ID,St.SAMPLE_NO, St.SAMPLE_VOLUME_ML__,St.SAMPLE_ID_,St.SOURCE_BATCH_ID_BATCH_ID_,mas.TASK_ID  from AV_93626_COMP  mas&#xD;&#xA;left join AV_93483_1 St&#xD;&#xA;on mas.SAMPLE_ID= St.RDLIMS_SAMPLE_ID&#xD;&#xA;where mas.collection_key = %%collection_key%%">
+                <fileImportMapping mappingOption="Use Column:" mappingValue="RDLIMS_SAMPLE_ID">
+                  <table key="29" />
+                  <field key="30" />
+                </fileImportMapping>
+                <fileImportMapping mappingOption="Use Column:" mappingValue="TASK_ID">
+                  <table key="29" />
+                  <field key="33" />
+                </fileImportMapping>
+                <fileImportMapping mappingOption="Use Column:" mappingValue="SOURCE_BATCH_ID_BATCH_ID_">
+                  <table key="1" />
+                  <field key="3" />
+                </fileImportMapping>
+                <fileImportMapping mappingOption="Use Column:" mappingValue="SAMPLE_NO">
+                  <table key="1" />
+                  <field key="35" />
+                </fileImportMapping>
+                <fileImportMapping mappingOption="Use Column:" mappingValue="SAMPLE_ID_">
+                  <table key="1" />
+                  <field key="5" />
+                </fileImportMapping>
+                <fileImportMapping mappingOption="Use Column:" mappingValue="SAMPLE_VOLUME_ML__">
+                  <table key="1" />
+                  <field key="36" />
+                </fileImportMapping>
+                <replicates />
+                <ReturnValues>
+                  <ReturnValue name="RDLIMS_SAMPLE_ID" dataType="1" />
+                  <ReturnValue name="SAMPLE_NO" dataType="1" />
+                  <ReturnValue name="SOURCE_BATCH_ID_BATCH_ID_" dataType="1" />
+                  <ReturnValue name="SAMPLE_ID_" dataType="1" />
+                  <ReturnValue name="SAMPLE_VOLUME_ML__" dataType="0" />
+                  <ReturnValue name="TASK_ID" dataType="1" />
+                </ReturnValues>
+              </configdata>
+            </fileImportTemplate>
+          </protocolVersion>
+        </protocol>
+      </object>
+    </section>
+  </sectionSetView>
+</collection>

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<collection name="DBC" noteSectionCount="0">
+  <collectionType name="Protocol Definition" />
+  <sectionSetView sectionCount="1">
+    <section name="DBC New" active="true">
+      <sectionType name="Protocol Definition" />
+      <object>
+        <field name="Protocol Definition" />
+        <protocol>
+          <protocolVersion version_created="NEW" migrationKey="93542" lastUsedId="16" auditFlag="1" placeholderText="">
+            <table key="2" name="Metadata" version="1" comment="">
+              <detailTable key="5" />
+              <field key="3" name="Column volume (L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="N_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="4" name="Load concentration (gm/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="N_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="14" name="Experiment Id" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="T_1" isIndexed="false" isKeyCol="true" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <graphTemplate key="12" name="Graph" version="1" summaryTableKey="2" comment="" imageXPixels="600" imageYPixels="600" smallImageXPixels="200" smallImageYPixels="200" saveSmallImage="false" saveImage="false">
+                <xAxisFieldTable key="5" />
+                <xAxisField key="9" />
+                <yAxisFieldTable key="5" />
+                <yAxisField key="11" />
+                <generalGraphDisplayOptions showTitle="true" legendPosition="1" showXAxisCaption="true" showYAxisCaption="true" xLog="false" xMin="0" xMax="100" yLog="false" yMin="0" yMax="100" enhancedDisplay="true" title="Load factor (mg/ml of resin) vs. Breakthrough (%)" titleFontName="Microsoft Sans Serif" titleFontSize="8" titleFontStyle="Regular" titleFontColor="0" xAxisCaption="Load factor (mg/ml of resin)" xAxisFontName="Microsoft Sans Serif" xAxisFontSize="8" xAxisFontStyle="Regular" xAxisFontColor="0" yAxisCaption="Breakthrough (%)" yAxisFontName="Microsoft Sans Serif" yAxisFontSize="8" yAxisFontStyle="Regular" yAxisFontColor="0" columnType="3" columnLegend="" showCurve="true" barWidth="30" barStyle="-1" showIn3D="false" xAxisScaling="0" yAxisScaling="0" />
+                <protocolDataGraphDisplayOptions showIndividual="false" showObserved="true" showPredicted="true" showDeleted="true" pointStyle="2" barStyle="1" deletedDataColor="255" columnColor="0" />
+                <additionalContentGraphDisplayOptions errorBars="0" errorBarParameter="0" showCurvesInLegend="true" extendXBounds="10" />
+              </graphTemplate>
+            </table>
+            <table key="5" name="DBC Data Table" version="1" comment="">
+              <field key="6" name="Fraction No" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="7" name="Fraction Volume (L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="N_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="8" name="Cummulative Load volume (L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="N_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="9" name="Load factor (gm/L of resin)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="N_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="get" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="( A * B ) / C">
+                  <parameter name="A">
+                    <parameterFieldTable key="5" />
+                    <parameterField key="8" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="4" />
+                  </parameter>
+                  <parameter name="C">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="3" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="10" name="Fraction concentration (gm/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="N_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="11" name="Breakthrough (Perc)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="N_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="2" />
+                <calculation key="0" name="get" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="( A / B ) * 100.0">
+                  <parameter name="A">
+                    <parameterFieldTable key="5" />
+                    <parameterField key="10" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="4" />
+                  </parameter>
+                </calculation>
+              </field>
+            </table>
+            <fileImportTemplate key="13" name="GetExperiment" version="1" comment="" importMode="DataImport">
+              <configdata key="0" configurationAddinName="SqlImportEngine" fileNameDelimiter="" actionOnDataTooLong="0" actionOnBadDataFormat="0" fillNullWithLast="0" silentImport="1" fillMissingKeyValues="0" dataUpdateMode="0" sql="Select ec.Name FROM endb.eln_collections ec&#xD;&#xA;Where section_set_key = %%Collection_key%%">
+                <fileImportMapping mappingOption="Use Column:" mappingValue="Name">
+                  <table key="2" />
+                  <field key="14" />
+                </fileImportMapping>
+                <replicates />
+                <ReturnValues>
+                  <ReturnValue name="Name" dataType="1" />
+                </ReturnValues>
+              </configdata>
+            </fileImportTemplate>
+            <fileImportTemplate key="16" name="Excel File" version="1" comment="" importMode="DataImport">
+              <configdata key="0" configurationAddinName="ColumnarImportEngine" fileNameDelimiter="" actionOnDataTooLong="0" actionOnBadDataFormat="0" fillNullWithLast="0" delimiter="," specialDelimiter="false" fileHeaderCount="1" secondaryDelimiter="" fileFooterCount="0" unpivotColToPass="" unpivotColToTransform="">
+                <fileImportMapping mappingOption="Prompt Me" mappingValue="">
+                  <table key="2" />
+                  <field key="14" />
+                </fileImportMapping>
+                <fileImportMapping mappingOption="Data in File Column Number:" mappingValue="2">
+                  <table key="5" />
+                  <field key="6" />
+                </fileImportMapping>
+                <fileImportMapping mappingOption="Data in File Column Number:" mappingValue="3">
+                  <table key="5" />
+                  <field key="7" />
+                </fileImportMapping>
+                <fileImportMapping mappingOption="Data in File Column Number:" mappingValue="4">
+                  <table key="5" />
+                  <field key="8" />
+                </fileImportMapping>
+                <fileImportMapping mappingOption="Data in File Column Number:" mappingValue="6">
+                  <table key="5" />
+                  <field key="10" />
+                </fileImportMapping>
+                <replicates />
+              </configdata>
+            </fileImportTemplate>
+          </protocolVersion>
+        </protocol>
+      </object>
+    </section>
+  </sectionSetView>
+</collection>

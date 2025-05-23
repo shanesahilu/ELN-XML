@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<collection name="FT and HT" noteSectionCount="0">
+  <collectionType name="Protocol Definition" />
+  <sectionSetView sectionCount="1">
+    <section name="FreezeThaw" active="true">
+      <sectionType name="Protocol Definition" />
+      <object>
+        <field name="Protocol Definition" />
+        <protocol>
+          <protocolVersion version_created="NEW" migrationKey="97030" lastUsedId="51" auditFlag="1" placeholderText="">
+            <table key="1" name="Plan" version="1" comment="">
+              <detailTable key="2" />
+              <field key="3" name="Stage " version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="26" name="Source Batch ID." version="1" comment="Source " requireValue="false" allowDependent="false" sortOrder="2" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="5" name="Sample Name" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="6" name="Hold temperature (°C)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="T_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="7" name="Location" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="T_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="21" name="Experiment_Id" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="T_6" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+            </table>
+            <table key="2" name="Data" version="1" comment="">
+              <field key="8" name="Source Batch ID" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="get" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="26" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="9" name="Time Point" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="23" name="Sample_Name" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="T_14" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="get" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="5" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="10" name="Sample ID" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="CONCAT_ABC" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="CONCAT ( A , &quot;-&quot; , B , &quot;-&quot; , C , &quot;-&quot; , D )">
+                  <parameter name="A">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="8" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="23" />
+                  </parameter>
+                  <parameter name="C">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="25" />
+                  </parameter>
+                  <parameter name="D">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="9" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="24" name="Phase Name" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="T_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="">
+                  <picklist name="Phase Name" />
+                </fieldConfiguration>
+              </field>
+              <field key="25" name="Temperature Condition" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="T_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="">
+                  <picklist name="Temperature Condition" />
+                </fieldConfiguration>
+              </field>
+              <field key="11" name="Hold Time Start" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="7" resultCol="D_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="DateTime" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" />
+              </field>
+              <field key="12" name="Hold Time end" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="8" resultCol="D_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="DateTime" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" />
+              </field>
+              <field key="13" name="Calculated Sample Hold (hr)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="9" resultCol="N_2" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="3" />
+                <calculation key="0" name="Time-calc:" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="CONCAT ( A , &quot;:&quot; , B , &quot;:&quot; , C , &quot;:&quot; , D )">
+                  <parameter name="A">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="31" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="33" />
+                  </parameter>
+                  <parameter name="C">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="32" />
+                  </parameter>
+                  <parameter name="D">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="34" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="14" name="Sample pH" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="10" resultCol="T_7" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="15" name="Sample Conductivity (mS/cm)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="11" resultCol="T_8" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="16" name="Sample Temperature (°C)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="12" resultCol="T_9" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="17" name="Sample Turbidity (NTU)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="13" resultCol="T_10" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="18" name="OD 280 / Absorbance" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="14" resultCol="T_11" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="19" name="Extinction Coefficient " version="1" comment="" requireValue="false" allowDependent="false" sortOrder="15" resultCol="T_12" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="20" name="Concentration (g/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="16" resultCol="N_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" formatSetting="Decimal" formatDepth="3" />
+                <calculation key="0" name="get" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A / B">
+                  <parameter name="A">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="18" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="19" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="27" name="Remarks" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="17" resultCol="T_15" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="31" name="Days" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="18" resultCol="T_6" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="da1" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="SPLIT ( A , &quot;.&quot; , 1.0 )">
+                  <parameter name="A">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="35" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="32" name="Mins" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="19" resultCol="T_13" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="mins1" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="FORMATDATETIME ( A , &quot;mm&quot; , &quot;false&quot; )">
+                  <parameter name="A">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="35" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="33" name="Hours" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="20" resultCol="T_16" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="hrs-1" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="FORMATDATETIME ( A , &quot;HH&quot; , &quot;false&quot; )">
+                  <parameter name="A">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="35" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="34" name="Secs" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="21" resultCol="T_17" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="sec-1" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="FORMATDATETIME ( A , &quot;ss&quot; , &quot;false&quot; )">
+                  <parameter name="A">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="35" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="35" name="Date Diff in Nos" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="22" resultCol="N_3" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+                <calculation key="0" name="Subtraction" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A - B">
+                  <parameter name="A">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="12" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="11" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="49" name="Calculated Sample Hold (hr)." version="1" comment="" requireValue="false" allowDependent="false" sortOrder="23" resultCol="T_18" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="Concat1" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="CONCAT ( A , &quot;:&quot; , B , &quot;:&quot; , C , &quot;:&quot; , D )">
+                  <parameter name="A">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="31" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="33" />
+                  </parameter>
+                  <parameter name="C">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="32" />
+                  </parameter>
+                  <parameter name="D">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="34" />
+                  </parameter>
+                </calculation>
+              </field>
+            </table>
+            <fileImportTemplate key="22" name="Add Row" version="1" comment="" importMode="DataImport">
+              <configdata key="0" configurationAddinName="SqlImportEngine" fileNameDelimiter="" actionOnDataTooLong="0" actionOnBadDataFormat="0" fillNullWithLast="0" silentImport="1" fillMissingKeyValues="0" dataUpdateMode="0" sql="Select ec.Name FROM endb.eln_collections ec&#xD;&#xA;Where section_set_key = %%Collection_key%%">
+                <fileImportMapping mappingOption="Use Column:" mappingValue="Name">
+                  <table key="1" />
+                  <field key="21" />
+                </fileImportMapping>
+                <replicates />
+                <ReturnValues>
+                  <ReturnValue name="Name" dataType="1" />
+                </ReturnValues>
+              </configdata>
+            </fileImportTemplate>
+          </protocolVersion>
+        </protocol>
+      </object>
+    </section>
+  </sectionSetView>
+</collection>
