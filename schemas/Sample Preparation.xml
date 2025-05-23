@@ -1,0 +1,666 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<collection name="Sample Preparation" noteSectionCount="0">
+  <collectionType name="Protocol Definition" />
+  <sectionSetView sectionCount="7">
+    <section name="Sample Details" active="true">
+      <sectionType name="Protocol Definition" />
+      <object>
+        <field name="Protocol Definition" />
+        <protocol>
+          <protocolVersion version_created="NEW" migrationKey="93198" lastUsedId="20" auditFlag="1" placeholderText="">
+            <table key="1" name="Experiment Preparation Details" version="1" comment="">
+              <detailTable key="12" />
+              <field key="3" name="Experiment Id" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="4" name="Produt Stage  " version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="5" name="Time Point " version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="6" name="Temperature (°C)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="T_6" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="7" name="Condition" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="T_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="8" name="Stage Gate" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="T_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="9" name="Curve Generation Date" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="7" resultCol="D_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="DateTime" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" />
+              </field>
+              <field key="10" name="Curve Validity Date" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="8" resultCol="D_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Date" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" />
+              </field>
+            </table>
+            <table key="12" name="Sample Details" version="1" comment="">
+              <field key="13" name="Sample ID*" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="14" name="Batch ID*" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="15" name="Stage*" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="16" name="Manufacturing Date" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="D_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Date" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" />
+              </field>
+              <field key="17" name="Expiry Date" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="D_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Date" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" />
+              </field>
+              <field key="20" name="ExpId" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="T_4" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="Conditional" version="1" configurationAddinName="Conditional Calculation" updateNullValuesOnly="false" useProtocolField="1">
+                  <defaultValueFieldTable key="1" />
+                  <defaultValueField key="3" />
+                </calculation>
+              </field>
+            </table>
+            <fileImportTemplate key="19" name="ExperimentId" version="1" comment="" importMode="DataImport">
+              <configdata key="0" configurationAddinName="SqlImportEngine" fileNameDelimiter="" actionOnDataTooLong="0" actionOnBadDataFormat="0" fillNullWithLast="0" silentImport="0" sql="Select ec.Name FROM endb.eln_collections ec&#xD;&#xA;Where section_set_key = %%Collection_key%%">
+                <fileImportMapping mappingOption="Use Column:" mappingValue="Name">
+                  <table key="1" />
+                  <field key="3" />
+                </fileImportMapping>
+                <replicates />
+                <ReturnValues>
+                  <ReturnValue name="Name" dataType="1" />
+                </ReturnValues>
+              </configdata>
+            </fileImportTemplate>
+          </protocolVersion>
+        </protocol>
+      </object>
+    </section>
+    <section name="Sample Dilution" active="true">
+      <sectionType name="Protocol Definition" />
+      <object>
+        <field name="Protocol Definition" />
+        <protocol>
+          <protocolVersion version_created="NEW" migrationKey="93199" lastUsedId="53" auditFlag="1" placeholderText="">
+            <table key="1" name="Sample Details" version="1" comment="">
+              <detailTable key="12" />
+              <field key="29" name="Sample ID*" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="30" name="Batch ID*" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="31" name="Stage*" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="T_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="32" name="Manufacturing Date" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="D_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Date" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" />
+              </field>
+              <field key="33" name="Expiry Date" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="D_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Date" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" />
+              </field>
+              <field key="3" name="Experiment Id" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <internalDatasourceDetails key="45" name="Get Sample Details" version="1" sourceDataLocation="0" runOnImport="true" runOnUpdate="true" updateNullValuesOnly="true">
+                <sourceProtocol>
+                  <sourcePath sourceSectionPosition="1" field="Protocol Definition">
+                    <collection key="783611">
+                      <section key="3984574">
+                        <object key="146">
+                          <tag />
+                        </object>
+                      </section>
+                    </collection>
+                  </sourcePath>
+                </sourceProtocol>
+                <internalDSParameter key="48" name="" version="1" useProtocolField="true">
+                  <sourceField>
+                    <table key="12" />
+                    <field key="20" />
+                  </sourceField>
+                  <paramValue />
+                  <parameterFieldTable key="1" />
+                  <parameterField key="3" />
+                </internalDSParameter>
+                <internalDSReturnValue key="49" name="" version="1">
+                  <sourceField>
+                    <table key="12" />
+                    <field key="13" />
+                  </sourceField>
+                  <returnValueFieldTable key="1" />
+                  <returnValueField key="29" />
+                </internalDSReturnValue>
+                <internalDSReturnValue key="50" name="" version="1">
+                  <sourceField>
+                    <table key="12" />
+                    <field key="14" />
+                  </sourceField>
+                  <returnValueFieldTable key="1" />
+                  <returnValueField key="30" />
+                </internalDSReturnValue>
+                <internalDSReturnValue key="51" name="" version="1">
+                  <sourceField>
+                    <table key="12" />
+                    <field key="15" />
+                  </sourceField>
+                  <returnValueFieldTable key="1" />
+                  <returnValueField key="31" />
+                </internalDSReturnValue>
+                <internalDSReturnValue key="52" name="" version="1">
+                  <sourceField>
+                    <table key="12" />
+                    <field key="16" />
+                  </sourceField>
+                  <returnValueFieldTable key="1" />
+                  <returnValueField key="32" />
+                </internalDSReturnValue>
+                <internalDSReturnValue key="53" name="" version="1">
+                  <sourceField>
+                    <table key="12" />
+                    <field key="17" />
+                  </sourceField>
+                  <returnValueFieldTable key="1" />
+                  <returnValueField key="33" />
+                </internalDSReturnValue>
+              </internalDatasourceDetails>
+            </table>
+            <table key="12" name="Sample Dilution" version="1" comment="">
+              <field key="34" name="Sample ID (ELN)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="Conditional" version="1" configurationAddinName="Conditional Calculation" updateNullValuesOnly="false" useProtocolField="1">
+                  <defaultValueFieldTable key="1" />
+                  <defaultValueField key="29" />
+                </calculation>
+              </field>
+              <field key="35" name="Batch ID (Non ELN)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="Conditional" version="1" configurationAddinName="Conditional Calculation" updateNullValuesOnly="false" useProtocolField="1">
+                  <defaultValueFieldTable key="1" />
+                  <defaultValueField key="30" />
+                </calculation>
+              </field>
+              <field key="36" name="Dilution Number " version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="N_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="37" name="Diluent Name" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="38" name="Vol. of Sample required (µL)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="N_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="39" name="Diluent Volume (µL)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="N_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="40" name="Volume Prepared (µL)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="7" resultCol="T_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="41" name="Initial Concentration  (mg/mL)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="8" resultCol="N_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="42" name="Final Concentration (mg/mL)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="9" resultCol="N_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+            </table>
+            <fileImportTemplate key="43" name="ExperimentId" version="1" comment="" importMode="DataImport">
+              <configdata key="0" configurationAddinName="SqlImportEngine" fileNameDelimiter="" actionOnDataTooLong="0" actionOnBadDataFormat="0" fillNullWithLast="0" silentImport="0" sql="Select ec.Name FROM endb.eln_collections ec&#xD;&#xA;Where section_set_key = %%Collection_key%%">
+                <fileImportMapping mappingOption="Use Column:" mappingValue="Name">
+                  <table key="1" />
+                  <field key="3" />
+                </fileImportMapping>
+                <replicates />
+                <ReturnValues>
+                  <ReturnValue name="Name" dataType="1" />
+                </ReturnValues>
+              </configdata>
+            </fileImportTemplate>
+          </protocolVersion>
+        </protocol>
+      </object>
+    </section>
+    <section name="Sample Treatment" active="true">
+      <sectionType name="Protocol Definition" />
+      <object>
+        <field name="Protocol Definition" />
+        <protocol>
+          <protocolVersion version_created="NEW" migrationKey="93200" lastUsedId="71" auditFlag="1" placeholderText="">
+            <table key="1" name="Sample Details" version="1" comment="">
+              <detailTable key="12" />
+              <field key="42" name="Sample ID*" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="41" name="Batch ID*" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="43" name="Stage*" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="T_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="44" name="Manufacturing Date" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="D_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Date" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" />
+              </field>
+              <field key="45" name="Expiry Date" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="D_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Date" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" />
+              </field>
+              <field key="3" name="Experiment Id" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <internalDatasourceDetails key="64" name="GetSampleDetails" version="1" sourceDataLocation="0" runOnImport="true" runOnUpdate="true" updateNullValuesOnly="false">
+                <sourceProtocol>
+                  <sourcePath sourceSectionPosition="1" field="Protocol Definition">
+                    <collection key="783611">
+                      <section key="3984574">
+                        <object key="146">
+                          <tag />
+                        </object>
+                      </section>
+                    </collection>
+                  </sourcePath>
+                </sourceProtocol>
+                <internalDSParameter key="66" name="" version="1" useProtocolField="true">
+                  <sourceField>
+                    <table key="12" />
+                    <field key="20" />
+                  </sourceField>
+                  <paramValue />
+                  <parameterFieldTable key="1" />
+                  <parameterField key="3" />
+                </internalDSParameter>
+                <internalDSReturnValue key="67" name="" version="1">
+                  <sourceField>
+                    <table key="12" />
+                    <field key="13" />
+                  </sourceField>
+                  <returnValueFieldTable key="1" />
+                  <returnValueField key="42" />
+                </internalDSReturnValue>
+                <internalDSReturnValue key="68" name="" version="1">
+                  <sourceField>
+                    <table key="12" />
+                    <field key="14" />
+                  </sourceField>
+                  <returnValueFieldTable key="1" />
+                  <returnValueField key="41" />
+                </internalDSReturnValue>
+                <internalDSReturnValue key="69" name="" version="1">
+                  <sourceField>
+                    <table key="12" />
+                    <field key="15" />
+                  </sourceField>
+                  <returnValueFieldTable key="1" />
+                  <returnValueField key="43" />
+                </internalDSReturnValue>
+                <internalDSReturnValue key="70" name="" version="1">
+                  <sourceField>
+                    <table key="12" />
+                    <field key="16" />
+                  </sourceField>
+                  <returnValueFieldTable key="1" />
+                  <returnValueField key="44" />
+                </internalDSReturnValue>
+                <internalDSReturnValue key="71" name="" version="1">
+                  <sourceField>
+                    <table key="12" />
+                    <field key="17" />
+                  </sourceField>
+                  <returnValueFieldTable key="1" />
+                  <returnValueField key="45" />
+                </internalDSReturnValue>
+              </internalDatasourceDetails>
+            </table>
+            <table key="12" name="Sample Treatment" version="1" comment="">
+              <field key="46" name="Sample ID (ELN)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="Conditional" version="1" configurationAddinName="Conditional Calculation" updateNullValuesOnly="false" useProtocolField="1">
+                  <defaultValueFieldTable key="1" />
+                  <defaultValueField key="42" />
+                </calculation>
+              </field>
+              <field key="47" name="Batch ID (Non ELN)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="Conditional" version="1" configurationAddinName="Conditional Calculation" updateNullValuesOnly="false" useProtocolField="1">
+                  <defaultValueFieldTable key="1" />
+                  <defaultValueField key="41" />
+                </calculation>
+              </field>
+              <field key="48" name="Treatment Type" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="49" name="Reagent1 Name" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="T_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="50" name="Reagent2 Name" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="T_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="51" name="Reagent3 Name" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="T_6" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="52" name="Reagent4 Name" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="7" resultCol="T_7" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="53" name="Sample Volume  (µL)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="8" resultCol="T_8" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="54" name="Reagent1 Volume (µL)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="9" resultCol="N_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="55" name="Reagent2 Volume (µL)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="10" resultCol="N_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="56" name="Reagent3 Volume (µL)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="11" resultCol="N_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="57" name="Reagent4 Volume (µL)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="12" resultCol="N_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="58" name="Final Volume  (µL)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="13" resultCol="N_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+                <calculation key="0" name="A+B+C+D" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A + B + C + D">
+                  <parameter name="A">
+                    <parameterFieldTable key="12" />
+                    <parameterField key="54" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="12" />
+                    <parameterField key="55" />
+                  </parameter>
+                  <parameter name="C">
+                    <parameterFieldTable key="12" />
+                    <parameterField key="56" />
+                  </parameter>
+                  <parameter name="D">
+                    <parameterFieldTable key="12" />
+                    <parameterField key="57" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="59" name="Temperature (°C)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="14" resultCol="T_9" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="60" name="Incubation Duration " version="1" comment="" requireValue="false" allowDependent="false" sortOrder="15" resultCol="T_10" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="61" name="Incubation Duration UOM" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="16" resultCol="T_11" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="62" name="Remarks" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="17" resultCol="T_12" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+            </table>
+            <fileImportTemplate key="63" name="ExperimentId" version="1" comment="" importMode="DataImport">
+              <configdata key="0" configurationAddinName="SqlImportEngine" fileNameDelimiter="" actionOnDataTooLong="0" actionOnBadDataFormat="0" fillNullWithLast="0" silentImport="0" sql="Select ec.Name FROM endb.eln_collections ec&#xD;&#xA;Where section_set_key = %%Collection_key%%">
+                <fileImportMapping mappingOption="Use Column:" mappingValue="Name">
+                  <table key="1" />
+                  <field key="3" />
+                </fileImportMapping>
+                <replicates />
+                <ReturnValues>
+                  <ReturnValue name="Name" dataType="1" />
+                </ReturnValues>
+              </configdata>
+            </fileImportTemplate>
+          </protocolVersion>
+        </protocol>
+      </object>
+    </section>
+    <section name="Primary Data" active="true">
+      <sectionType name="Primary Data" />
+      <object>
+        <field name="Primary Data" />
+        <hierarchyData rowHashCodeGenerator="3" lastUsedId="20001">
+          <protocolPath sectionPosition="1">
+            <collection key="783611">
+              <section key="3984574">
+                <object key="146" />
+              </section>
+            </collection>
+          </protocolPath>
+          <table name="Experiment Preparation Details">
+            <row hashCode="1" validity="2">
+              <F_3>Sample Preparation</F_3>
+              <F_4 />
+              <F_5 />
+              <F_6 />
+              <F_7 />
+              <F_8 />
+              <F_9 />
+              <F_10 />
+            </row>
+          </table>
+          <table name="Sample Details">
+            <row hashCode="2" parentHashCode="1" validity="2">
+              <F_13>1</F_13>
+              <F_14>11</F_14>
+              <F_15>Drug Substance</F_15>
+              <F_16>01-Mar-2019</F_16>
+              <F_17>01-Mar-2020</F_17>
+              <F_20>Sample Preparation</F_20>
+            </row>
+            <row hashCode="3" parentHashCode="1" validity="2">
+              <F_13>2</F_13>
+              <F_14>12</F_14>
+              <F_15>Drug Product</F_15>
+              <F_16>01-Mar-2019</F_16>
+              <F_17>01-Mar-2020</F_17>
+              <F_20>Sample Preparation</F_20>
+            </row>
+          </table>
+          <displayConfiguration>
+            <dataDisplayState key="20001">
+              <columnState visible="true" fixed="Left" isValidityColumn="true" columnWidth="0" columnDisplayIndex="0">
+                <displayFieldTable key="1" />
+              </columnState>
+              <columnState visible="true" fixed="None" isValidityColumn="false" columnWidth="128" columnDisplayIndex="1">
+                <displayFieldTable key="1" />
+                <displayField key="3" />
+                <keyFieldDisplayTable key="1" />
+              </columnState>
+              <columnState visible="true" fixed="None" isValidityColumn="false" columnWidth="78" columnDisplayIndex="2">
+                <displayFieldTable key="1" />
+                <displayField key="4" />
+                <keyFieldDisplayTable key="1" />
+              </columnState>
+              <columnState visible="true" fixed="None" isValidityColumn="false" columnWidth="75" columnDisplayIndex="3">
+                <displayFieldTable key="1" />
+                <displayField key="5" />
+                <keyFieldDisplayTable key="1" />
+              </columnState>
+              <columnState visible="true" fixed="None" isValidityColumn="false" columnWidth="90" columnDisplayIndex="4">
+                <displayFieldTable key="1" />
+                <displayField key="6" />
+                <keyFieldDisplayTable key="1" />
+              </columnState>
+              <columnState visible="true" fixed="None" isValidityColumn="false" columnWidth="75" columnDisplayIndex="5">
+                <displayFieldTable key="1" />
+                <displayField key="7" />
+                <keyFieldDisplayTable key="1" />
+              </columnState>
+              <columnState visible="true" fixed="None" isValidityColumn="false" columnWidth="75" columnDisplayIndex="6">
+                <displayFieldTable key="1" />
+                <displayField key="8" />
+                <keyFieldDisplayTable key="1" />
+              </columnState>
+              <columnState visible="true" fixed="None" isValidityColumn="false" columnWidth="119" columnDisplayIndex="7">
+                <displayFieldTable key="1" />
+                <displayField key="9" />
+                <keyFieldDisplayTable key="1" />
+              </columnState>
+              <columnState visible="true" fixed="None" isValidityColumn="false" columnWidth="100" columnDisplayIndex="8">
+                <displayFieldTable key="1" />
+                <displayField key="10" />
+                <keyFieldDisplayTable key="1" />
+              </columnState>
+              <showParentKeyFields />
+              <displayTableDepth depth="1" />
+              <mainPanel1HeightPercentage height="11.954459203036052" />
+              <topPanel1WidthPercentage width="11.954459203036052" />
+              <topLeftPanel1WidthPercentage width="49.905123339658445" />
+            </dataDisplayState>
+            <valueDisplayConfiguration>
+              <time standardTimeZoneName="India Standard Time" offset="-330" />
+            </valueDisplayConfiguration>
+          </displayConfiguration>
+        </hierarchyData>
+      </object>
+    </section>
+    <section name="Primary Data 3" active="true">
+      <sectionType name="Primary Data" />
+      <object>
+        <field name="Primary Data" />
+        <hierarchyData rowHashCodeGenerator="3" lastUsedId="20001">
+          <protocolPath sectionPosition="2">
+            <collection key="783611">
+              <section key="3984575">
+                <object key="146" />
+              </section>
+            </collection>
+          </protocolPath>
+          <table name="Sample Details">
+            <row hashCode="1" validity="2">
+              <F_29>1</F_29>
+              <F_30>11</F_30>
+              <F_31>Drug Substance</F_31>
+              <F_32>01-Mar-2019</F_32>
+              <F_33>01-Mar-2020</F_33>
+              <F_3>Sample Preparation</F_3>
+            </row>
+            <row hashCode="2" validity="2">
+              <F_29>2</F_29>
+              <F_30>12</F_30>
+              <F_31>Drug Product</F_31>
+              <F_32>01-Mar-2019</F_32>
+              <F_33>01-Mar-2020</F_33>
+              <F_3>Sample Preparation</F_3>
+            </row>
+          </table>
+          <table name="Sample Dilution">
+            <row hashCode="3" parentHashCode="1" validity="2">
+              <F_34>1</F_34>
+              <F_35>11</F_35>
+              <F_36 />
+              <F_37 />
+              <F_38 />
+              <F_39 />
+              <F_40 />
+              <F_41 />
+              <F_42 />
+            </row>
+          </table>
+          <displayConfiguration>
+            <dataDisplayState key="20001">
+              <showParentKeyFields />
+              <displayTableDepth depth="1" />
+              <mainPanel1HeightPercentage height="11.954459203036052" />
+              <topPanel1WidthPercentage width="11.954459203036052" />
+              <topLeftPanel1WidthPercentage width="49.905123339658445" />
+            </dataDisplayState>
+            <valueDisplayConfiguration>
+              <time standardTimeZoneName="India Standard Time" offset="-330" />
+            </valueDisplayConfiguration>
+          </displayConfiguration>
+        </hierarchyData>
+      </object>
+    </section>
+    <section name="Primary Data 2" active="true">
+      <sectionType name="Primary Data" />
+      <object>
+        <field name="Primary Data" />
+        <hierarchyData rowHashCodeGenerator="3" lastUsedId="20001">
+          <protocolPath sectionPosition="2">
+            <collection key="783611">
+              <section key="3984575">
+                <object key="146" />
+              </section>
+            </collection>
+          </protocolPath>
+          <table name="Sample Details">
+            <row hashCode="1" validity="2">
+              <F_29>1</F_29>
+              <F_30>11</F_30>
+              <F_31>Drug Substance</F_31>
+              <F_32>01-Mar-2019</F_32>
+              <F_33>01-Mar-2020</F_33>
+              <F_3>Sample Preparation</F_3>
+            </row>
+            <row hashCode="2" validity="2">
+              <F_29>2</F_29>
+              <F_30>12</F_30>
+              <F_31>Drug Product</F_31>
+              <F_32>01-Mar-2019</F_32>
+              <F_33>01-Mar-2020</F_33>
+              <F_3>Sample Preparation</F_3>
+            </row>
+          </table>
+          <table name="Sample Dilution">
+            <row hashCode="3" parentHashCode="1" validity="2">
+              <F_34>1</F_34>
+              <F_35>11</F_35>
+              <F_36 />
+              <F_37 />
+              <F_38 />
+              <F_39 />
+              <F_40 />
+              <F_41 />
+              <F_42 />
+            </row>
+          </table>
+          <displayConfiguration>
+            <dataDisplayState key="20001">
+              <showParentKeyFields />
+              <displayTableDepth depth="1" />
+              <mainPanel1HeightPercentage height="11.954459203036052" />
+              <topPanel1WidthPercentage width="11.954459203036052" />
+              <topLeftPanel1WidthPercentage width="49.905123339658445" />
+            </dataDisplayState>
+            <valueDisplayConfiguration>
+              <time standardTimeZoneName="India Standard Time" offset="-330" />
+            </valueDisplayConfiguration>
+          </displayConfiguration>
+        </hierarchyData>
+      </object>
+    </section>
+    <section name="Primary Data 4" active="true">
+      <sectionType name="Primary Data" />
+      <object>
+        <field name="Primary Data" />
+        <hierarchyData rowHashCodeGenerator="2" lastUsedId="20001">
+          <protocolPath sectionPosition="3">
+            <collection key="783611">
+              <section key="3984576">
+                <object key="146" />
+              </section>
+            </collection>
+          </protocolPath>
+          <table name="Sample Details">
+            <row hashCode="1" validity="2">
+              <F_42>1</F_42>
+              <F_41>11</F_41>
+              <F_43>Drug Substance</F_43>
+              <F_44>01-Mar-2019</F_44>
+              <F_45>01-Mar-2020</F_45>
+              <F_3>Sample Preparation</F_3>
+            </row>
+            <row hashCode="2" validity="2">
+              <F_42>2</F_42>
+              <F_41>12</F_41>
+              <F_43>Drug Product</F_43>
+              <F_44>01-Mar-2019</F_44>
+              <F_45>01-Mar-2020</F_45>
+              <F_3>Sample Preparation</F_3>
+            </row>
+          </table>
+          <displayConfiguration>
+            <dataDisplayState key="20001">
+              <showParentKeyFields />
+              <displayTableDepth depth="1" />
+              <mainPanel1HeightPercentage height="11.954459203036052" />
+              <topPanel1WidthPercentage width="11.954459203036052" />
+              <topLeftPanel1WidthPercentage width="49.905123339658445" />
+            </dataDisplayState>
+            <valueDisplayConfiguration>
+              <time standardTimeZoneName="India Standard Time" offset="-330" />
+            </valueDisplayConfiguration>
+          </displayConfiguration>
+        </hierarchyData>
+      </object>
+    </section>
+  </sectionSetView>
+</collection>

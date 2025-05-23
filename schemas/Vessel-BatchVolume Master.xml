@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<collection name="Vessel-BatchVolume Master" noteSectionCount="0">
+  <collectionType name="Protocol Definition" />
+  <sectionSetView sectionCount="1">
+    <section name="Vessel-BatchVolume Master" active="true">
+      <sectionType name="Protocol Definition" />
+      <object>
+        <field name="Protocol Definition" />
+        <protocol>
+          <protocolVersion version_created="NEW" migrationKey="97049" lastUsedId="4" auditFlag="1" placeholderText="">
+            <table key="1" name="Vessel-BatchVolume Master" version="1" comment="">
+              <field key="2" name="Id" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="N_1" isIndexed="false" isKeyCol="true" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="1" initialSequenceValue="1" sequenceIncrementalValue="1" />
+              </field>
+              <field key="3" name="VesselType" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="">
+                  <picklist name="Vessel" />
+                </fieldConfiguration>
+              </field>
+              <field key="4" name="BatchVolume" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+            </table>
+          </protocolVersion>
+        </protocol>
+      </object>
+    </section>
+  </sectionSetView>
+</collection>

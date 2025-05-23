@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<collection name="Media Feed Reagent Solution" noteSectionCount="0">
+  <collectionType name="Protocol Definition" />
+  <sectionSetView sectionCount="3">
+    <section name="MFSR-Parent" active="true">
+      <sectionType name="Protocol Definition" />
+      <object>
+        <field name="Protocol Definition" />
+        <protocol>
+          <protocolVersion version_created="NEW" migrationKey="96848" lastUsedId="43" auditFlag="1" placeholderText="">
+            <table key="1" name="Parent MFSR Table" version="1" comment="">
+              <detailTable key="2" />
+              <field key="28" name="Experiment_Id" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_10" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="6" name="Solution Type" version="1" comment="" requireValue="true" allowDependent="false" sortOrder="2" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="1" defaultValue="Solution">
+                  <picklist name="Solution Type" />
+                </fieldConfiguration>
+              </field>
+              <field key="7" name="Prepared By" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="8" name="Main Component Description" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="1" defaultValue="">
+                  <picklist name="Main-Component-Description" />
+                </fieldConfiguration>
+              </field>
+              <field key="9" name="MFSR ID" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="T_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="10" name="Concentration/Strength" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="T_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="11" name="Preparation Date" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="7" resultCol="D_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Date" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" />
+              </field>
+              <field key="12" name="Expiry Date" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="8" resultCol="D_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Date" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" />
+              </field>
+              <field key="13" name="Prepared Quantity" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="9" resultCol="N_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="14" name="UOM" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="10" resultCol="T_6" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="">
+                  <picklist name="MFSR_UOM" />
+                </fieldConfiguration>
+              </field>
+              <field key="15" name="Storage Location" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="11" resultCol="T_7" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="16" name="Comments" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="12" resultCol="T_8" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="17" name="Procedure" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="13" resultCol="T_9" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="29" name="Attachment" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="14" resultCol="T_11" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="1" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="31" name="MFSR_Id-Old" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="15" resultCol="T_12" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="CONCAT-1" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="CONCAT ( A , &quot;_&quot; B , &quot;_&quot; , FORMATDATE ( C , &quot;ddMMyy&quot; ) )">
+                  <parameter name="A">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="8" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="10" />
+                  </parameter>
+                  <parameter name="C">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="11" />
+                  </parameter>
+                </calculation>
+              </field>
+              <datasourceDetails key="40" name="GetMFSRID" version="1" runOnImport="false" runOnUpdate="false" updateNullValuesOnly="false">
+                <parentSection name="GetMFSRID" />
+                <datasourceParameter key="41" name="Prefix1" version="1" useProtocolField="true" defaultValue="">
+                  <sourceParameter name="Prefix1" />
+                  <parameterFieldTable key="1" />
+                  <parameterField key="31" />
+                </datasourceParameter>
+                <datasourceParameter key="42" name="Padding" version="1" useProtocolField="false" defaultValue="4">
+                  <sourceParameter name="Padding" />
+                </datasourceParameter>
+                <datasourceReturnValue key="43" name="msfrid" version="1">
+                  <sourceReturnValue name="msfrid" />
+                  <returnValueFieldTable key="1" />
+                  <returnValueField key="9" />
+                </datasourceReturnValue>
+              </datasourceDetails>
+            </table>
+            <table key="2" name="Child MFSR Table" version="1" comment="">
+              <field key="18" name="MFSR ID (From Table 1)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="Conditional" version="1" configurationAddinName="Conditional Calculation" updateNullValuesOnly="false" useProtocolField="1">
+                  <defaultValueFieldTable key="1" />
+                  <defaultValueField key="9" />
+                </calculation>
+              </field>
+              <field key="19" name="Ingredient Number" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="N_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="20" name="Ingredient (MFSR or RM) Name" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="21" name="Qty Required (Per UOM)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="N_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="22" name="Total Qty Required" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+                <calculation key="0" name="get" version="1" configurationAddinName="Mathematical Calculation" updateNullValuesOnly="false" formula="A * B">
+                  <parameter name="A">
+                    <parameterFieldTable key="2" />
+                    <parameterField key="21" />
+                  </parameter>
+                  <parameter name="B">
+                    <parameterFieldTable key="1" />
+                    <parameterField key="13" />
+                  </parameter>
+                </calculation>
+              </field>
+              <field key="23" name="Vendor Name" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="T_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="24" name="Lot Number" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="7" resultCol="T_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="25" name="Pre Filer Lot No" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="8" resultCol="T_6" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="26" name="Final Filter Lot No" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="9" resultCol="T_7" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="30" name="Total Qty Req-UOM" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="10" resultCol="T_8" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="">
+                  <picklist name="MFSR_UOM" />
+                </fieldConfiguration>
+              </field>
+            </table>
+            <fileImportTemplate key="27" name="Add Row" version="1" comment="" importMode="DataImport">
+              <configdata key="0" configurationAddinName="SqlImportEngine" fileNameDelimiter="" actionOnDataTooLong="0" actionOnBadDataFormat="0" fillNullWithLast="0" silentImport="1" fillMissingKeyValues="0" dataUpdateMode="0" sql="Select ec.Name FROM endb.eln_collections ec&#xD;&#xA;Where section_set_key = %%Collection_key%%">
+                <fileImportMapping mappingOption="Use Column:" mappingValue="Name">
+                  <table key="1" />
+                  <field key="28" />
+                </fileImportMapping>
+                <replicates />
+                <ReturnValues>
+                  <ReturnValue name="Name" dataType="1" />
+                </ReturnValues>
+              </configdata>
+            </fileImportTemplate>
+          </protocolVersion>
+        </protocol>
+      </object>
+    </section>
+    <section name="MFSR-Child-Equipment" active="true">
+      <sectionType name="Protocol Definition" />
+      <object>
+        <field name="Protocol Definition" />
+        <protocol>
+          <protocolVersion version_created="NEW" migrationKey="96849" lastUsedId="66" auditFlag="1" placeholderText="">
+            <table key="1" name="Child Equipment Table" version="1" comment="">
+              <field key="35" name="Experiment_Id" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_15" isIndexed="false" isKeyCol="false" isVisible="false" allowEdits="false" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="2" name="MFSR ID - From Table 1" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="3" name="pH Meter" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="4" name="Digital Thermometer" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="T_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="5" name="Blood Gas Analyzer" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="T_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="6" name="Osmometer" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="T_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="7" name="Turbidimeter" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="7" resultCol="T_6" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="8" name="Autoclave (For sterilizing filters-siphon bottles)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="8" resultCol="T_7" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="9" name="Weighing Balance 1" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="9" resultCol="T_8" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="10" name="Weighing Balance 2" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="10" resultCol="T_9" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="11" name="Weighing Balance 3" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="11" resultCol="T_10" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="12" name="Cold Storage 2-8 (°C)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="12" resultCol="T_11" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="13" name="Magnetic Stirrer" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="13" resultCol="T_12" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="14" name="CEDEX BIOHT" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="14" resultCol="T_13" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+              <field key="15" name="Pump for Filtration" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="15" resultCol="T_14" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="" />
+              </field>
+            </table>
+            <fileImportTemplate key="33" name="GetDetails" version="1" comment="" importMode="DataImport">
+              <configdata key="0" configurationAddinName="ProtocolImportEngine" fileNameDelimiter="" actionOnDataTooLong="0" actionOnBadDataFormat="0" fillNullWithLast="0" silentImport="1" fillMissingKeyValues="0" dataUpdateMode="0">
+                <fileImportMapping mappingOption="Use Protocol Field:" importSourceProtocolItemKey="34">
+                  <table key="1" />
+                  <field key="35" />
+                  <sourceField>
+                    <table key="1" />
+                    <field key="28" />
+                  </sourceField>
+                </fileImportMapping>
+                <fileImportMapping mappingOption="Use Protocol Field:" importSourceProtocolItemKey="34">
+                  <table key="1" />
+                  <field key="2" />
+                  <sourceField>
+                    <table key="1" />
+                    <field key="9" />
+                  </sourceField>
+                </fileImportMapping>
+                <replicates />
+                <importSourceProtocols>
+                  <importSourceProtocol key="34" sourceDataLocation="0" sortOrder="0">
+                    <sourceProtocol>
+                      <sourcePath sourceSectionPosition="1" field="Protocol Definition">
+                        <collection key="783646">
+                          <section key="3984633">
+                            <object key="146">
+                              <tag />
+                            </object>
+                          </section>
+                        </collection>
+                      </sourcePath>
+                    </sourceProtocol>
+                  </importSourceProtocol>
+                </importSourceProtocols>
+                <importConditions />
+              </configdata>
+            </fileImportTemplate>
+          </protocolVersion>
+        </protocol>
+      </object>
+    </section>
+    <section name="MFSR-Child-Result" active="true">
+      <sectionType name="Protocol Definition" />
+      <object>
+        <field name="Protocol Definition" />
+        <protocol>
+          <protocolVersion version_created="NEW" migrationKey="96850" lastUsedId="19" auditFlag="1" placeholderText="">
+            <table key="1" name="Child Result Table" version="1" comment="">
+              <field key="2" name="MFSR ID - From Table1" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="1" resultCol="T_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="Parent MFSR Table: MFSR ID" />
+              </field>
+              <field key="3" name="Temperature (°C)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="2" resultCol="N_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="4" name="Final pH" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="3" resultCol="N_3" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="5" name="Final pCO2 (mmHg)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="4" resultCol="N_4" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="6" name="Final Osmolality (mOsm/Kg)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="5" resultCol="N_5" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="7" name="Glutamine (mmol/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="6" resultCol="N_6" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="8" name="Glutamate (mmol/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="7" resultCol="N_7" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="9" name="Glucose (g/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="8" resultCol="N_1" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="10" name="Lactate (g/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="9" resultCol="N_8" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="11" name="NH4+ (mmol/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="10" resultCol="N_9" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="12" name="Sodium (mmol/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="11" resultCol="N_10" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="13" name="Potassium (mmol/L)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="12" resultCol="N_11" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="14" name="Turbidity Before Filtration (NTU)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="13" resultCol="N_12" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="15" name="Turbidity After Final Filtration (NTU)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="14" resultCol="N_13" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="17" name="Duration of Test (hrs)" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="15" resultCol="N_14" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Number" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" isSequence="0" />
+              </field>
+              <field key="16" name="Test status" version="1" comment="" requireValue="false" allowDependent="false" sortOrder="16" resultCol="T_2" isIndexed="false" isKeyCol="false" isVisible="true" allowEdits="true" hyperlink="">
+                <fieldConfiguration key="0" name="" version="1" customDefaultValue="None" dataTypeName="Text" isAttachmentAllowed="0" isNonPicklistValueAllowed="0" defaultValue="">
+                  <picklist name="Pass_Fail" />
+                </fieldConfiguration>
+              </field>
+            </table>
+            <fileImportTemplate key="18" name="GetDetails" version="1" comment="" importMode="DataImport">
+              <configdata key="0" configurationAddinName="ProtocolImportEngine" fileNameDelimiter="" actionOnDataTooLong="0" actionOnBadDataFormat="0" fillNullWithLast="0" silentImport="1" fillMissingKeyValues="0" dataUpdateMode="0">
+                <fileImportMapping mappingOption="Use Protocol Field:" importSourceProtocolItemKey="19">
+                  <table key="1" />
+                  <field key="2" />
+                  <sourceField>
+                    <table key="1" />
+                    <field key="9" />
+                  </sourceField>
+                </fileImportMapping>
+                <replicates />
+                <importSourceProtocols>
+                  <importSourceProtocol key="19" sourceDataLocation="0" sortOrder="0">
+                    <sourceProtocol>
+                      <sourcePath sourceSectionPosition="1" field="Protocol Definition">
+                        <collection key="783646">
+                          <section key="3984633">
+                            <object key="146">
+                              <tag />
+                            </object>
+                          </section>
+                        </collection>
+                      </sourcePath>
+                    </sourceProtocol>
+                  </importSourceProtocol>
+                </importSourceProtocols>
+                <importConditions />
+              </configdata>
+            </fileImportTemplate>
+          </protocolVersion>
+        </protocol>
+      </object>
+    </section>
+  </sectionSetView>
+</collection>
