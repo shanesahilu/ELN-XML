@@ -27,19 +27,18 @@ else:
 
 
 SCHEMA_FILES_CONFIG = {
-    # ... (your existing schema configurations including the new ones) ...
-    "media_feed_schema": os.path.join(SCHEMA_FOLDER, "Media Feed Reagent Solution.xml"),
-    "fed_batch_schema": os.path.join(SCHEMA_FOLDER, "FedBatch Conditions-DataCollection-CBD-UBD.xml"),
-    # ... add all your other schema entries here ...
-    "pa_feedback_output_schema": os.path.join(SCHEMA_FOLDER, "PA.Feedback-Output.xml"),
-    "pa_feedback_input_schema": os.path.join(SCHEMA_FOLDER, "PA.Feedback-Input.xml"),
-    "dbc_schema": os.path.join(SCHEMA_FOLDER, "DBC.xml"),
-    "dbd_buffer_prep_schema": os.path.join(SCHEMA_FOLDER, "DBD.Buffer.Prep.xml"),
-    "eluate_frac_pool_prep2_schema": os.path.join(SCHEMA_FOLDER, "Eluate.Frac.Pool.Prep2.xml"),
-    "ft_and_ht_schema": os.path.join(SCHEMA_FOLDER, "FT.and.HT.xml"),
-    "output_schema_definition": os.path.join(SCHEMA_FOLDER, "Output.xml"),
-    "tff_process_schema": os.path.join(SCHEMA_FOLDER, "TFF.Process.xml"),
-}
+        "media_feed_schema": os.path.join(SCHEMA_FOLDER, "Media Feed Reagent Solution.xml"),
+        "fed_batch_schema": os.path.join(SCHEMA_FOLDER, "FedBatch Conditions-DataCollection-CBD-UBD.xml"),
+        "pa_feedback_output_schema": os.path.join(SCHEMA_FOLDER, "PA Feedback-Output.xml"),
+        "pa_feedback_input_schema": os.path.join(SCHEMA_FOLDER, "PA Feedback-Input.xml"),
+        "dbc_schema": os.path.join(SCHEMA_FOLDER, "DBC.xml"),
+        "dbd_buffer_prep_schema": os.path.join(SCHEMA_FOLDER, "DBD Buffer Prep.xml"),
+        "eluate_frac_pool_prep2_schema": os.path.join(SCHEMA_FOLDER, "Eluate Frac Pool Prep2.xml"),
+        "ft_and_ht_schema": os.path.join(SCHEMA_FOLDER, "FT and HT.xml"),
+        "output_schema_definition": os.path.join(SCHEMA_FOLDER, "Output.xml"),
+        "tff_process_schema": os.path.join(SCHEMA_FOLDER, "TFF Process.xml"),
+
+    }
 
 # ... (your /convert route and if __name__ == '__main__': block remain the same) ...
 # Ensure the content of your /convert route and the main execution block are preserved from your working version.
