@@ -1,4 +1,4 @@
-# backend/Dockerfile
+
 FROM python:3.11-slim
 
 WORKDIR /app
@@ -11,7 +11,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# This line will copy app.py, pdf_processor.py, schemas/, and the new assets/ folder
 COPY . .
 
 EXPOSE 10000

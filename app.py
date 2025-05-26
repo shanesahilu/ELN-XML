@@ -1,9 +1,7 @@
-# backend/app.py
-
 from flask import Flask, request, send_file, jsonify
 from flask_cors import CORS
 import os
-import pdf_processor # Your pdf_processor module
+import pdf_processor 
 import io
 
 app = Flask(__name__)
@@ -12,19 +10,15 @@ CORS(app)
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 SCHEMA_FOLDER = os.path.join(BASE_DIR, 'schemas')
 
-# --- Define path to assets and logo ---
 ASSETS_FOLDER = os.path.join(BASE_DIR, 'assets')
 LOGO_FILE_PATH = os.path.join(ASSETS_FOLDER, 'logo.webp')
 
-# --- Set the logo path in the pdf_processor module at startup ---
 pdf_processor.set_pdf_logo_path(LOGO_FILE_PATH)
 
-# Optional: Log whether the logo was found (good for debugging)
 if not os.path.exists(LOGO_FILE_PATH):
     app.logger.warning(f"LOGO NOT FOUND: Expected at '{LOGO_FILE_PATH}'. PDFs will not have a logo.")
 else:
     app.logger.info(f"Logo found at '{LOGO_FILE_PATH}'. Will be used in PDFs.")
-
 
 SCHEMA_FILES_CONFIG = {
         "media_feed_schema": os.path.join(SCHEMA_FOLDER, "Media Feed Reagent Solution.xml"),
@@ -40,8 +34,6 @@ SCHEMA_FILES_CONFIG = {
 
     }
 
-# ... (your /convert route and if __name__ == '__main__': block remain the same) ...
-# Ensure the content of your /convert route and the main execution block are preserved from your working version.
 @app.route('/convert', methods=['POST'])
 def convert_xml_to_pdf():
     if 'xmlFile' not in request.files:
@@ -85,18 +77,16 @@ def convert_xml_to_pdf():
         return jsonify({"error": "Invalid file type. Please upload an XML file."}), 400
 
 if __name__ == '__main__':
-    # ... (your existing schema folder/file checks) ...
+
     if not os.path.isdir(SCHEMA_FOLDER):
         app.logger.critical(f"CRITICAL: SCHEMA_FOLDER '{SCHEMA_FOLDER}' does not exist. Schemas cannot be loaded.")
     else:
         missing_schemas = []
-        for name, path_val in SCHEMA_FILES_CONFIG.items(): # Renamed path to path_val to avoid conflict
+        for name, path_val in SCHEMA_FILES_CONFIG.items(): 
             if not os.path.exists(path_val):
                 missing_schemas.append(path_val)
         if missing_schemas:
             app.logger.critical(f"CRITICAL: The following schema files are missing: {', '.join(missing_schemas)}. Application might not function correctly.")
-    
-    # Make sure the Gunicorn command in Dockerfile is sh -c "gunicorn --bind 0.0.0.0:${PORT} app:app"
-    # The port here is for local Flask development server
+
     local_dev_port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=local_dev_port, debug=True)
