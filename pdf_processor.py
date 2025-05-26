@@ -218,34 +218,103 @@ def extract_hierarchy_data_tables(hierarchy_data_element):
     return tables_content
 
 def extract_excel_data_from_base64(base64_string):
-    sheets_data = []
+    sheets_data_with_sub_tables = []
     try:
         excel_binary_data = base64.b64decode(base64_string)
         excel_file_like_object = io.BytesIO(excel_binary_data)
-        workbook = openpyxl.load_workbook(excel_file_like_object, data_only=True, read_only=True) 
+        workbook = openpyxl.load_workbook(excel_file_like_object, data_only=True, read_only=True)
+        
         for sheet_name in workbook.sheetnames:
             sheet = workbook[sheet_name]
-            if sheet.max_row == 0 : continue 
-            first_row_cells = list(sheet.iter_rows(min_row=1, max_row=1, values_only=True))
-            headers = [str(cell if cell is not None else "") for cell in (first_row_cells[0] if first_row_cells else [])]
-            data_start_row = 1 
-            if headers and any(h.strip() for h in headers): 
-                data_start_row = 2
-            else: 
-                headers = [f"Col{i+1}" for i in range(sheet.max_column if sheet.max_column > 0 else 1) ]
-            rows = []
-            for row_values_tuple in sheet.iter_rows(min_row=data_start_row, max_col=len(headers) if headers else sheet.max_column, values_only=True):
-                row_data = [str(cell if cell is not None else "") for cell in row_values_tuple]
-                while len(row_data) < len(headers):
-                    row_data.append("")
-                if any(str(cell_val).strip() for cell_val in row_data): 
-                    rows.append(row_data)
-            if headers: 
-                sheets_data.append({"sheet_name": sheet_name, "headers": headers, "rows": rows})
+            if sheet.max_row == 0: continue
+
+            current_table_rows = []
+            table_count_in_sheet = 0
+            
+            # Read all rows into a list of lists
+            all_sheet_rows_raw = []
+            for row_idx in range(1, sheet.max_row + 1):
+                # Get max columns actually used in this row, or a reasonable default
+                max_col_for_row = sheet.max_column
+                if max_col_for_row is None or max_col_for_row == 0: # Handle completely empty sheet case
+                    # Try to infer from first row if it has data
+                    first_cell_val = sheet.cell(row=row_idx, column=1).value
+                    if first_cell_val is None and row_idx == 1 and sheet.max_row == 1: # Truly empty or single empty cell
+                        continue # Skip this sheet essentially
+                    max_col_for_row = 1 # Default to 1 if cannot determine
+                    # A more robust way would be to find the last column with data in the row
+                    # For simplicity, if sheet.max_column is None, we might miss some data if not careful
+                    # However, openpyxl usually gives a sheet.max_column if there's any data.
+
+                row_data = [str(sheet.cell(row=row_idx, column=col_idx).value if sheet.cell(row=row_idx, column=col_idx).value is not None else "") 
+                            for col_idx in range(1, max_col_for_row + 1)]
+                all_sheet_rows_raw.append(row_data)
+
+            if not all_sheet_rows_raw: continue
+
+            start_of_block_idx = 0
+            for i, row_content in enumerate(all_sheet_rows_raw):
+                is_blank_row = not any(str(cell_val).strip() for cell_val in row_content)
+                
+                if is_blank_row or i == len(all_sheet_rows_raw) - 1:
+                    # End of a block (or end of sheet)
+                    current_block_end_idx = i if is_blank_row else i + 1
+                    table_block_rows = all_sheet_rows_raw[start_of_block_idx:current_block_end_idx]
+                    
+                    # Filter out leading and trailing blank rows from the block itself
+                    table_block_rows = [r for r_idx, r in enumerate(table_block_rows) 
+                                        if any(str(c).strip() for c in r) or \
+                                        (r_idx > 0 and any(str(c).strip() for c in table_block_rows[r_idx-1])) or \
+                                        (r_idx < len(table_block_rows)-1 and any(str(c).strip() for c in table_block_rows[r_idx+1])) ]
+                    
+                    table_block_rows = [r for r in table_block_rows if any(str(c).strip() for c in r)]
+
+
+                    if table_block_rows:
+                        table_count_in_sheet += 1
+                        block_headers = []
+                        block_data_rows = []
+                        
+                        # Attempt to use the first row of the block as headers
+                        potential_headers = table_block_rows[0]
+                        # Heuristic: if more than half cells are non-empty and not all purely numeric, assume it's a header
+                        non_empty_cells = sum(1 for h in potential_headers if str(h).strip())
+                        is_likely_header = non_empty_cells > (len(potential_headers) / 2) and \
+                                           not all(str(h).strip().replace('.', '', 1).isdigit() for h in potential_headers if str(h).strip())
+
+                        if is_likely_header:
+                            block_headers = potential_headers
+                            block_data_rows = table_block_rows[1:]
+                        else:
+                            # Use generic headers if first row doesn't look like a header
+                            max_cols_in_block = max(len(r) for r in table_block_rows) if table_block_rows else 0
+                            block_headers = [f"Col{j+1}" for j in range(max_cols_in_block)]
+                            block_data_rows = table_block_rows
+                        
+                        # Ensure all data rows have the same number of columns as headers
+                        final_block_data_rows = []
+                        for data_r in block_data_rows:
+                            while len(data_r) < len(block_headers): data_r.append("")
+                            final_block_data_rows.append(data_r[:len(block_headers)])
+
+                        if block_headers or final_block_data_rows:
+                             sheets_data_with_sub_tables.append({
+                                "sheet_name": f"{sheet_name} - Table {table_count_in_sheet}" if table_count_in_sheet > 0 else sheet_name, # Append if multiple tables
+                                "headers": block_headers,
+                                "rows": final_block_data_rows
+                            })
+                    start_of_block_idx = i + 1 # Next block starts after this blank row
+            
+    except base64.binascii.Error as b64e:
+        print(f"Base64 decoding error for Excel: {b64e}")
+        sheets_data_with_sub_tables.append({"sheet_name": "Base64 Error", "headers": ["Error"], "rows": [[f"Base64 decoding error: {b64e}"]]})
     except Exception as e:
-        print(f"EXL ERR: Failed to extract data from Excel: {e}")
-        sheets_data.append({"sheet_name": "Error", "headers": ["Error"], "rows": [[f"EXL ERR: {e}"]]})
-    return sheets_data
+        print(f"EXL ERR: {e}")
+        import traceback
+        traceback.print_exc()
+        sheets_data_with_sub_tables.append({"sheet_name": "Processing Error", "headers": ["Error"], "rows": [[f"Could not parse Excel content: {e}"]]})
+        
+    return sheets_data_with_sub_tables
 
 def extract_word_text_from_base64(base64_string):
     if not docx:
@@ -363,16 +432,28 @@ def optimize_table_for_display(table_name, headers, rows, available_width, eleme
     return rendered_something
 
 def process_xml_to_pdf(xml_string_content, schema_files_config):
-    load_column_mappings_from_schema_files(schema_files_config)
-    pdf_buffer = io.BytesIO()
+    """
+    Processes an XML string content and generates a PDF in memory.
 
-    total_header_reservation = 1.2 * inch 
+    Args:
+        xml_string_content (str): The XML content as a string.
+        schema_files_config (dict): Configuration for schema files.
+
+    Returns:
+        bytes: The generated PDF content as bytes, or None if an error occurs.
+    """
+    load_column_mappings_from_schema_files(schema_files_config) 
+
+    pdf_buffer = io.BytesIO() 
+
+    total_header_reservation = 0.75 * inch 
+    doc_top_margin = 0.5 * inch 
 
     doc = SimpleDocTemplate(pdf_buffer, pagesize=landscape(letter),
                             leftMargin=0.5*inch, rightMargin=0.5*inch,
-                            topMargin=total_header_reservation, 
+                            topMargin=doc_top_margin, 
                             bottomMargin=0.5*inch)
-    final_elements_for_pdf = []
+    final_elements_for_pdf = [] 
 
     try:
         root = ET.fromstring(xml_string_content)
@@ -409,229 +490,333 @@ def process_xml_to_pdf(xml_string_content, schema_files_config):
         if not final_elements_for_pdf or len(final_elements_for_pdf) <=2 : 
              final_elements_for_pdf.append(Paragraph("No 'sectionSetView' (main content) found in the XML.", style_body))
 
-    else:
-        all_sections = section_set_view.findall("section")
-        for section_idx, section_elem in enumerate(all_sections):
-            sec_name = html.escape(section_elem.get("name", f"Section {section_idx + 1}"))
-            current_section_elements_buffer = []
-            section_has_renderable_content = False
+        try:
+            doc.build(final_elements_for_pdf)
+            return pdf_buffer.getvalue()
+        except Exception as e_build:
+            print(f"PDF ERR: Building PDF (no sectionSetView): {e_build}")
 
-            checklist_text_descriptions_for_section = {}
-            first_checklist_text_content_raw = None
-            for obj_elem_prescan in section_elem.findall("object"):
-                field_elem_prescan = obj_elem_prescan.find("field")
-                if field_elem_prescan is not None:
-                    original_field_name_prescan = field_elem_prescan.get("name")
-                    if original_field_name_prescan:
-                        normalized_field_name_prescan = original_field_name_prescan.lower().strip()
-                        if normalized_field_name_prescan == "checklist" or normalized_field_name_prescan == "check list":
-                            if not first_checklist_text_content_raw:
-                                styled_text_elem_prescan = obj_elem_prescan.find("styledText")
-                                if styled_text_elem_prescan is not None:
-                                    content_prescan, content_type_prescan = extract_styled_text_content(styled_text_elem_prescan)
-                                    if content_prescan and content_type_prescan == "text":
-                                        first_checklist_text_content_raw = content_prescan
-                                        checklist_text_descriptions_for_section = parse_checklist_text_content(first_checklist_text_content_raw)
-                                        break 
+            error_buffer_alt = io.BytesIO()
+            error_doc_alt = SimpleDocTemplate(error_buffer_alt, pagesize=landscape(letter))
+            try:
+                error_doc_alt.build([Paragraph("FATAL ERROR: Could not build PDF (no sectionSetView).", style_h1), Paragraph(str(e_build), style_error)])
+                return error_buffer_alt.getvalue()
+            except: 
+                return None 
 
-            for obj_idx, obj_elem in enumerate(section_elem.findall("object")):
-                field_elem = obj_elem.find("field")
-                if field_elem is None: continue
-                original_field_name_attr = field_elem.get("name", f"Unnamed Field {obj_idx + 1}")
-                normalized_field_name = original_field_name_attr.lower().strip()
-                field_name_display = html.escape(original_field_name_attr)
-                object_elements_buffer = []
-                object_produced_renderable_content = False
-                page_width_l, _ = landscape(letter); available_width_l = page_width_l - 1.0*inch
-                normalized_property_table_field_identifiers = {"metadata", "checklist", "check list", "mixing and stirring-filtration", "sop"}
+    all_sections = section_set_view.findall("section")
 
-                prop_instances = obj_elem.find("propertyInstances")
-                if prop_instances is not None and list(prop_instances) and \
-                   normalized_field_name in normalized_property_table_field_identifiers:
-                    metadata_list_of_dicts = extract_metadata_properties(prop_instances)
-                    table_headers = ["Property", "Value"]
-                    current_metadata_rows = [[item['Property'], item['Value']] for item in metadata_list_of_dicts] if metadata_list_of_dicts else []
-                    is_checklist_type_field = (normalized_field_name == "checklist" or normalized_field_name == "check list")
-                    if is_checklist_type_field and metadata_list_of_dicts:
-                        table_headers = ["Checklist Item", "Status"]
-                        if checklist_text_descriptions_for_section:
-                            enhanced_rows = []
-                            for item_dict in metadata_list_of_dicts:
-                                prop_key_original = item_dict['Property']; item_value = item_dict['Value']
-                                description = checklist_text_descriptions_for_section.get(prop_key_original)
-                                if not description:
-                                    prop_key_norm_pi = prop_key_original.rstrip('.').strip()
-                                    for text_key, desc_val in checklist_text_descriptions_for_section.items():
-                                        text_key_norm_text = text_key.rstrip('.').strip()
-                                        if text_key_norm_text == prop_key_norm_pi: description = desc_val; break
-                                if not description:
-                                    for text_key_raw, desc_val in checklist_text_descriptions_for_section.items():
-                                        text_key_norm = text_key_raw.rstrip('.').strip(); prop_key_norm = prop_key_original.rstrip('.').strip()
-                                        if (prop_key_norm.startswith(text_key_norm) or text_key_norm.startswith(prop_key_norm)) and \
-                                           abs(len(prop_key_norm) - len(text_key_norm)) < 4 :
-                                            description = desc_val; break
-                                formatted_property = f"{prop_key_original}: {description}" if description else prop_key_original
-                                if item_value == "false": formatted_value = "Not Completed"
-                                elif item_value == "true": formatted_value = "Completed"
-                                elif item_value == "": formatted_value = " "
-                                else: formatted_value = item_value
-                                enhanced_rows.append([formatted_property, formatted_value])
-                            current_metadata_rows = enhanced_rows
-                        else:
-                            temp_rows = []
-                            for item_dict in metadata_list_of_dicts:
-                                item_value = item_dict['Value']
-                                if item_value == "false": formatted_val = "Not Completed"
-                                elif item_value == "true": formatted_val = "Completed"
-                                elif item_value == "": formatted_val = " "
-                                else: formatted_val = item_value
-                                temp_rows.append([item_dict['Property'], formatted_val])
-                            current_metadata_rows = temp_rows
-                    elif metadata_list_of_dicts and not is_checklist_type_field:
-                         current_metadata_rows = [[item['Property'], item['Value']] for item in metadata_list_of_dicts]
-                    if optimize_table_for_display(
-                        table_name=field_name_display, headers=table_headers, rows=current_metadata_rows,
-                        available_width=available_width_l, elements_list=object_elements_buffer,
-                        default_header_style=[('BACKGROUND',(0,0),(-1,0),colors.darkslateblue), ('TEXTCOLOR',(0,0),(-1,0),colors.whitesmoke)],
-                        transposed_table_new_header_row_style=[('BACKGROUND',(0,0),(-1,0),colors.darkslateblue), ('TEXTCOLOR',(0,0),(-1,0),colors.whitesmoke)]
-                    ): object_produced_renderable_content = True
+    for section_idx, section_elem in enumerate(all_sections):
+        sec_name = html.escape(section_elem.get("name", f"Section {section_idx + 1}"))
 
-                styled_text_elem = obj_elem.find("styledText")
-                if not object_produced_renderable_content and styled_text_elem is not None:
-                    content, content_type = extract_styled_text_content(styled_text_elem)
-                    if content and content_type == "text":
-                        should_skip_this_styled_text = False
-                        if first_checklist_text_content_raw is not None and \
-                           first_checklist_text_content_raw == content and \
-                           checklist_text_descriptions_for_section:
-                            should_skip_this_styled_text = True
-                        if not should_skip_this_styled_text:
-                            display_content = (content[:2500] + '...') if len(content) > 2500 else content
-                            if "\n" in content and len(content.split('\n')) > 1: 
-                                object_elements_buffer.append(Preformatted(html.escape(display_content), style_code))
-                            else:
-                                object_elements_buffer.append(Paragraph(html.escape(display_content), style_body))
-                            object_produced_renderable_content = True
+        current_section_elements_buffer = [] 
+        section_has_renderable_content = False
 
-                ts_elem = obj_elem.find("tableSection")
-                if not object_produced_renderable_content and ts_elem is not None:
-                    headers, rows = extract_tablesection_data(ts_elem)
-                    if optimize_table_for_display(
-                        table_name=field_name_display, headers=headers, rows=rows, available_width=available_width_l,
-                        elements_list=object_elements_buffer,
-                        default_header_style=[('BACKGROUND',(0,0),(-1,0),colors.cadetblue),('TEXTCOLOR',(0,0),(-1,0),colors.whitesmoke)],
-                        transposed_table_new_header_row_style=[('BACKGROUND',(0,0),(-1,0),colors.cadetblue),('TEXTCOLOR',(0,0),(-1,0),colors.whitesmoke)]
-                    ): object_produced_renderable_content = True
+        checklist_text_descriptions_for_section = {} 
+        first_checklist_text_content_raw = None 
+        for obj_elem_prescan in section_elem.findall("object"):
+            field_elem_prescan = obj_elem_prescan.find("field")
+            if field_elem_prescan is not None:
+                original_field_name_prescan = field_elem_prescan.get("name")
+                if original_field_name_prescan: 
+                    normalized_field_name_prescan = original_field_name_prescan.lower().strip()
 
-                hd_elem = obj_elem.find("hierarchyData")
-                if not object_produced_renderable_content and hd_elem is not None:
-                    hierarchy_tables = extract_hierarchy_data_tables(hd_elem)
-                    temp_hd_sub_elements = []
-                    any_hd_table_rendered = False
-                    if hierarchy_tables:
-                        for h_table_idx, h_table in enumerate(hierarchy_tables):
-                            h_table_specific_elements = [] 
-                            if optimize_table_for_display(
-                                table_name=h_table['name'], headers=h_table["headers"], rows=h_table["rows"],
-                                available_width=available_width_l, elements_list=h_table_specific_elements, 
-                                default_header_style=[('BACKGROUND',(0,0),(-1,0),colors.lightgrey)], 
-                                transposed_table_new_header_row_style=[('BACKGROUND',(0,0),(-1,0),colors.lightgrey)]
-                            ):
-                                any_hd_table_rendered = True
-                                temp_hd_sub_elements.append(Paragraph(f"Data Table: {html.escape(h_table['name'])}", style_h4_table_title))
-                                temp_hd_sub_elements.extend(h_table_specific_elements) 
-                    if any_hd_table_rendered:
-                        object_elements_buffer.extend(temp_hd_sub_elements) 
-                        object_produced_renderable_content = True
+                    if normalized_field_name_prescan == "checklist": 
+                        if not first_checklist_text_content_raw: 
+                            styled_text_elem_prescan = obj_elem_prescan.find("styledText")
+                            if styled_text_elem_prescan is not None:
+                                content_prescan, content_type_prescan = extract_styled_text_content(styled_text_elem_prescan)
+                                if content_prescan and content_type_prescan == "text":
+                                    first_checklist_text_content_raw = content_prescan
+                                    checklist_text_descriptions_for_section = parse_checklist_text_content(first_checklist_text_content_raw)
 
-                doc_elem = obj_elem.find("document")
-                if not object_produced_renderable_content and doc_elem is not None:
-                    doc_type = doc_elem.get("documentType")
+                                    break 
+
+        for obj_idx, obj_elem in enumerate(section_elem.findall("object")):
+            field_elem = obj_elem.find("field")
+            if field_elem is None: continue 
+
+            original_field_name_attr = field_elem.get("name", f"Unnamed Field {obj_idx + 1}") 
+            normalized_field_name = original_field_name_attr.lower().strip() 
+            field_name_display = html.escape(original_field_name_attr)
+
+            object_elements_buffer = [] 
+            object_produced_renderable_content = False 
+
+            page_width_l, _ = landscape(letter); available_width_l = page_width_l - 1.0*inch 
+
+            normalized_property_table_field_identifiers = {"metadata", "check list", "mixing and stirring-filtration", "sop"}
+
+            prop_instances = obj_elem.find("propertyInstances")
+            if prop_instances is not None and list(prop_instances) and \
+               normalized_field_name in normalized_property_table_field_identifiers:
+                metadata_list_of_dicts = extract_metadata_properties(prop_instances)
+
+                table_headers = ["Property", "Value"] 
+                current_metadata_rows = [[item['Property'], item['Value']] for item in metadata_list_of_dicts] if metadata_list_of_dicts else []
+                is_checklist_type_field = (normalized_field_name == "checklist" or normalized_field_name == "check list")
+
+                if is_checklist_type_field and metadata_list_of_dicts: 
+                    table_headers = ["Checklist Item", "Status"] 
+                    if checklist_text_descriptions_for_section: 
+                        enhanced_rows = []
+                        for item_dict in metadata_list_of_dicts:
+                            prop_key_original = item_dict['Property']; item_value = item_dict['Value']
+                            description = checklist_text_descriptions_for_section.get(prop_key_original)
+
+                            if not description: 
+                                prop_key_norm_pi = prop_key_original.rstrip('.').strip()
+                                for text_key, desc_val in checklist_text_descriptions_for_section.items():
+                                    text_key_norm_text = text_key.rstrip('.').strip()
+                                    if text_key_norm_text == prop_key_norm_pi: description = desc_val; break
+                            if not description: 
+                                for text_key_raw, desc_val in checklist_text_descriptions_for_section.items():
+                                    text_key_norm = text_key_raw.rstrip('.').strip(); prop_key_norm = prop_key_original.rstrip('.').strip()
+                                    if (prop_key_norm.startswith(text_key_norm) or text_key_norm.startswith(prop_key_norm)) and \
+                                       abs(len(prop_key_norm) - len(text_key_norm)) < 4 : 
+                                        description = desc_val; break
+                            formatted_property = f"{prop_key_original}: {description}" if description else prop_key_original
+
+                            if item_value == "false": formatted_value = "Not Completed"
+                            elif item_value == "true": formatted_value = "Completed"
+                            elif item_value == "": formatted_value = " " 
+                            else: formatted_value = item_value
+                            enhanced_rows.append([formatted_property, formatted_value])
+                        current_metadata_rows = enhanced_rows
+                    else: 
+                        temp_rows = []
+                        for item_dict in metadata_list_of_dicts:
+                            item_value = item_dict['Value']
+                            if item_value == "false": formatted_val = "Not Completed"
+                            elif item_value == "true": formatted_val = "Completed"
+                            elif item_value == "": formatted_val = " " 
+                            else: formatted_val = item_value
+                            temp_rows.append([item_dict['Property'], formatted_val])
+                        current_metadata_rows = temp_rows
+                elif metadata_list_of_dicts and not is_checklist_type_field: 
+                     current_metadata_rows = [[item['Property'], item['Value']] for item in metadata_list_of_dicts]
+
+                if optimize_table_for_display(
+                    table_name=field_name_display, headers=table_headers, rows=current_metadata_rows, 
+                    available_width=available_width_l, elements_list=object_elements_buffer, 
+                    default_header_style=[('BACKGROUND',(0,0),(-1,0),colors.darkslateblue), ('TEXTCOLOR',(0,0),(-1,0),colors.whitesmoke)],
+                    transposed_table_new_header_row_style=[('BACKGROUND',(0,0),(-1,0),colors.darkslateblue), ('TEXTCOLOR',(0,0),(-1,0),colors.whitesmoke)] 
+                ): object_produced_renderable_content = True
+
+            styled_text_elem = obj_elem.find("styledText")
+
+            if not object_produced_renderable_content and styled_text_elem is not None:
+                content, content_type = extract_styled_text_content(styled_text_elem)
+                should_skip_this_styled_text = False
+
+                if first_checklist_text_content_raw is not None and \
+                   first_checklist_text_content_raw == content and \
+                   normalized_field_name in {"checklist", "check list"} and \
+                   obj_elem.find("propertyInstances") is not None and \
+                   list(obj_elem.find("propertyInstances")): 
+                    should_skip_this_styled_text = True
+
+                if content and not should_skip_this_styled_text:
+                    prefix = "Text Content:" if content_type == "text" else "Raw RTF Content:"
+                    object_elements_buffer.append(Paragraph(prefix, style_body_small))
+                    display_content = (content[:2500] + '...') if len(content) > 2500 else content
+                    if content_type == "text" and "\n" in content and len(content.split('\n')) > 1: 
+                         object_elements_buffer.append(Preformatted(html.escape(display_content), style_code))
+                    else:
+                        object_elements_buffer.append(Paragraph(html.escape(display_content), style_code if content_type == "rtf" else style_body))
+                    object_produced_renderable_content = True
+
+            ts_elem = obj_elem.find("tableSection")
+            if not object_produced_renderable_content and ts_elem is not None:
+                headers, rows = extract_tablesection_data(ts_elem)
+                if optimize_table_for_display( 
+                    table_name=field_name_display, headers=headers, rows=rows, available_width=available_width_l, 
+                    elements_list=object_elements_buffer,
+                    default_header_style=[('BACKGROUND',(0,0),(-1,0),colors.cadetblue),('TEXTCOLOR',(0,0),(-1,0),colors.whitesmoke)],
+                    transposed_table_new_header_row_style=[('BACKGROUND',(0,0),(-1,0),colors.cadetblue),('TEXTCOLOR',(0,0),(-1,0),colors.whitesmoke)]
+                ): object_produced_renderable_content = True
+
+            hd_elem = obj_elem.find("hierarchyData")
+            if not object_produced_renderable_content and hd_elem is not None:
+                hierarchy_tables = extract_hierarchy_data_tables(hd_elem) 
+                temp_hd_sub_elements = [] 
+                any_hd_table_rendered = False
+                if hierarchy_tables:
+                    for h_table_idx, h_table in enumerate(hierarchy_tables): 
+                        h_table_specific_elements = [] 
+                        if optimize_table_for_display(
+                            table_name=h_table['name'], headers=h_table["headers"], rows=h_table["rows"], 
+                            available_width=available_width_l, elements_list=h_table_specific_elements, 
+                            default_header_style=[('BACKGROUND',(0,0),(-1,0),colors.lightgrey)], 
+                            transposed_table_new_header_row_style=[('BACKGROUND',(0,0),(-1,0),colors.lightgrey)]
+                        ):
+                            any_hd_table_rendered = True
+
+                            temp_hd_sub_elements.append(Paragraph(f"Data Table: {html.escape(h_table['name'])}", style_h4_table_title))
+                            temp_hd_sub_elements.extend(h_table_specific_elements) 
+                if any_hd_table_rendered:
+                    object_elements_buffer.extend(temp_hd_sub_elements) 
+                    object_produced_renderable_content = True
+                elif not list(hd_elem.findall("table")) and not list(hd_elem.findall("protocolPath")) : 
+                     object_elements_buffer.append(Paragraph("(Hierarchy data present but no tables found or parsed)", style_body_small)); object_produced_renderable_content = True
+                elif not list(hd_elem.findall("table")) and list(hd_elem.findall("protocolPath")): 
+                     object_elements_buffer.append(Paragraph("(Hierarchy data linked by protocol, but no data tables found in this XML for corresponding tables)", style_body_small)); object_produced_renderable_content = True
+
+            doc_elem = obj_elem.find("document")
+
+            if not object_produced_renderable_content and \
+               doc_elem is not None and doc_elem.get("documentType") == "1":
+                if docx is None: 
+                    object_elements_buffer.append(Paragraph("Skipped Word document: python-docx library not found.", style_note))
+                else:
                     b64_content = doc_elem.text
                     if b64_content and b64_content.strip():
-                        if doc_type == "1": 
-                            extracted_word_text = extract_word_text_from_base64(b64_content.strip())
-                            if extracted_word_text and extracted_word_text.strip() and \
-                               not extracted_word_text.lower().startswith("skipped word document:") and \
-                               not extracted_word_text.lower().startswith("error extracting text"):
-                                object_elements_buffer.append(Paragraph(f"Content from Word Document ({html.escape(field_name_display)}):", style_h4_table_title))
-                                display_word_text = (extracted_word_text[:3000] + '...') if len(extracted_word_text) > 3000 else extracted_word_text
-                                object_elements_buffer.append(Preformatted(html.escape(display_word_text), style_code))
-                                object_produced_renderable_content = True
-                            elif extracted_word_text: 
-                                object_elements_buffer.append(Paragraph(extracted_word_text, style_note)) 
-                                object_produced_renderable_content = True
-                        elif doc_type == "2": 
-                            excel_sheets = extract_excel_data_from_base64(b64_content.strip())
-                            final_excel_elements_for_obj = []
-                            sheets_with_data_count = 0
-                            for sheet_idx, sheet in enumerate(excel_sheets):
-                                sheet_specific_elements_buffer = [] 
-                                if optimize_table_for_display(
-                                    table_name=sheet['sheet_name'], headers=sheet["headers"], rows=sheet["rows"],
-                                    available_width=available_width_l, elements_list=sheet_specific_elements_buffer,
-                                    default_header_style=[('BACKGROUND',(0,0),(-1,0),colors.palegreen)], 
-                                    transposed_table_new_header_row_style=[('BACKGROUND',(0,0),(-1,0),colors.palegreen)]
-                                ):
-                                    final_excel_elements_for_obj.append(Paragraph(f"Sheet: {html.escape(sheet['sheet_name'])} (from {html.escape(field_name_display)})", style_h4_table_title))
-                                    final_excel_elements_for_obj.extend(sheet_specific_elements_buffer)
-                                    sheets_with_data_count +=1
-                            if sheets_with_data_count > 0:
-                                object_elements_buffer.extend(final_excel_elements_for_obj)
-                                object_produced_renderable_content = True
+                        extracted_word_text = extract_word_text_from_base64(b64_content.strip())
+                        if extracted_word_text and extracted_word_text.strip() and \
+                           not extracted_word_text.lower().startswith("skipped word document:") and \
+                           not extracted_word_text.lower().startswith("error extracting text"):
+                            object_elements_buffer.append(Paragraph(f"Content from Word Document ({html.escape(field_name_display)}):", style_h4_table_title))
+                            display_word_text = (extracted_word_text[:3000] + '...') if len(extracted_word_text) > 3000 else extracted_word_text
+                            object_elements_buffer.append(Preformatted(html.escape(display_word_text), style_code))
+                        elif extracted_word_text: 
+                            object_elements_buffer.append(Paragraph(extracted_word_text, style_note)) 
+                        else: 
+                            object_elements_buffer.append(Paragraph("(Word document found, but no text content extracted or content was empty)", style_body_small))
+                    else:
+                        object_elements_buffer.append(Paragraph("(Word document found, but no Base64 content provided)", style_body_small))
+                object_produced_renderable_content = True 
 
-                addin_elem = obj_elem.find("addin")
-                if not object_produced_renderable_content and addin_elem is not None:
-                    addin_data = addin_elem.get("data", "")
-                    if addin_data and addin_data.strip():
-                        display_addin = (addin_data[:2000] + '...') if len(addin_data) > 2000 else addin_data
-                        object_elements_buffer.append(Preformatted(html.escape(display_addin), style_code)) 
+            if not object_produced_renderable_content and \
+               doc_elem is not None and doc_elem.get("documentType") == "2": 
+                b64_content = doc_elem.text
+                if b64_content and b64_content.strip():
+                    excel_tables_from_sheet = extract_excel_data_from_base64(b64_content.strip())
+                    if excel_tables_from_sheet:
+
+                        excel_content_added_to_buffer = False
+                        temp_excel_elements = [] 
+
+                        for table_data in excel_tables_from_sheet:
+
+                            sheet_table_specific_elements = [] 
+
+                            if optimize_table_for_display(
+                                table_name=table_data['sheet_name'], 
+                                headers=table_data["headers"], 
+                                rows=table_data["rows"], 
+                                available_width=available_width_l, 
+                                elements_list=sheet_table_specific_elements, 
+                                default_header_style=[('BACKGROUND',(0,0),(-1,0),colors.palegreen)],
+                                transposed_table_new_header_row_style=[('BACKGROUND',(0,0),(-1,0),colors.palegreen)]
+                            ):
+                                if sheet_table_specific_elements: 
+                                    if not excel_content_added_to_buffer: 
+                                        temp_excel_elements.append(Paragraph(f"Excel Content from: {field_name_display}", style_h3))
+                                        excel_content_added_to_buffer = True
+                                    temp_excel_elements.append(Paragraph(f"Sheet/Table: {html.escape(table_data['sheet_name'])}", style_h4_table_title))
+                                    temp_excel_elements.extend(sheet_table_specific_elements)
+
+                            elif table_data["headers"] or table_data["rows"]: 
+                                if not excel_content_added_to_buffer:
+                                    temp_excel_elements.append(Paragraph(f"Excel Content from: {field_name_display}", style_h3))
+                                    excel_content_added_to_buffer = True
+                                temp_excel_elements.append(Paragraph(f"Sheet/Table: {html.escape(table_data['sheet_name'])}", style_h4_table_title))
+
+                                pdf_data = [table_data["headers"]] + table_data["rows"]
+
+                                pdf_data = [r for r in pdf_data if any(str(c).strip() for c in r)] 
+                                if not pdf_data : continue 
+
+                                if len(pdf_data) == 1 and not any(str(c).strip() for c in pdf_data[0]): continue 
+
+                                num_cols = len(pdf_data[0]) if pdf_data and pdf_data[0] else 1
+                                col_w = (available_width_l / num_cols) if num_cols > 0 else available_width_l
+                                min_col_w = 0.3*inch 
+                                col_widths = [max(min_col_w, col_w)]*num_cols if num_cols > 0 else None
+
+                                create_pdf_table(pdf_data, col_widths=col_widths, 
+                                                 table_style_commands=[('BACKGROUND',(0,0),(-1,0),colors.palegreen), ('FONTSIZE',(0,0),(-1,-1),6)], 
+                                                 elements_list=temp_excel_elements, 
+                                                 cell_style=ParagraphStyle(name=f'ExcelCellStyle_{id(pdf_data)}', parent=style_body_small, fontSize=6))
+                            else: 
+                                if len(excel_tables_from_sheet) == 1: 
+                                     temp_excel_elements.append(Paragraph("(Excel sheet seems empty or has no structured tables)", style_body_small))
+
+                        if temp_excel_elements: 
+                            object_elements_buffer.extend(temp_excel_elements)
+                            object_produced_renderable_content = True
+                    elif not excel_tables_from_sheet: 
+                        object_elements_buffer.append(Paragraph("(No tables extracted from Excel content)", style_body_small))
                         object_produced_renderable_content = True
+                processed_object_content = True 
 
-                if not object_produced_renderable_content:
-                    temp_fallback_elements = []
-                    is_fallback_content = False
-                    ancillary_data_elem = obj_elem.find("ancillaryData")
-                    if ancillary_data_elem is not None and ancillary_data_elem.get('extension'): 
-                        temp_fallback_elements.append(Paragraph(f"Note: Ancillary data found with extension '{html.escape(ancillary_data_elem.get('extension', 'N/A'))}' for field '{field_name_display}'. Specific rendering not implemented.", style_body_small))
-                        is_fallback_content = True
-                    if is_fallback_content:
-                        object_elements_buffer.extend(temp_fallback_elements)
-                        object_produced_renderable_content = True 
+            addin_elem = obj_elem.find("addin")
+            if not object_produced_renderable_content and addin_elem is not None:
+                addin_data = addin_elem.get("data", "")
+                if addin_data and addin_data.strip():
+                    object_elements_buffer.append(Paragraph("Addin Data (raw XML/text):", style_body_small)) 
+                    display_addin = (addin_data[:2000] + '...') if len(addin_data) > 2000 else addin_data
+                    object_elements_buffer.append(Preformatted(html.escape(display_addin), style_code))
+                object_produced_renderable_content = True
 
-                if object_produced_renderable_content:
-                    if field_name_display and field_name_display != f"Unnamed Field {obj_idx + 1}":
-                        current_section_elements_buffer.append(Paragraph(field_name_display, style_h3))
-                    current_section_elements_buffer.extend(object_elements_buffer)
-                    current_section_elements_buffer.append(Spacer(1, 0.05*inch)) 
-                    section_has_renderable_content = True
+            if not object_produced_renderable_content:
 
-            if section_has_renderable_content:
-                final_elements_for_pdf.append(Paragraph(sec_name, style_h2)) 
-                final_elements_for_pdf.extend(current_section_elements_buffer)
-                if section_idx < len(all_sections) - 1: 
-                    final_elements_for_pdf.append(PageBreak())
+                temp_fallback_elements = []
+                is_fallback_content = False
+                ancillary_data_elem = obj_elem.find("ancillaryData")
+                if ancillary_data_elem is not None and ancillary_data_elem.get('extension'): 
+                    temp_fallback_elements.append(Paragraph(f"Ancillary Data Extension: '{html.escape(ancillary_data_elem.get('extension', 'N/A'))}' (Content not displayed)", style_body_small)); is_fallback_content = True
+                elif obj_elem.find("dashboardCell") is not None: 
+                    temp_fallback_elements.append(Paragraph("(Dashboard Cell - content not extracted)", style_body_small)); is_fallback_content = True
+                elif obj_elem.find("image") is not None: 
+                    temp_fallback_elements.append(Paragraph("(Image data - not rendered)", style_body_small)); is_fallback_content = True
+                elif doc_elem is not None and doc_elem.get("documentType") == "4": 
+                    temp_fallback_elements.append(Paragraph("(Referenced PDF - content not displayed)", style_body_small)); is_fallback_content = True
+
+                if is_fallback_content:
+                    object_elements_buffer.extend(temp_fallback_elements)
+                    object_produced_renderable_content = True 
+                elif not list(obj_elem) or (len(list(obj_elem)) == 1 and obj_elem.find("field") is not None): 
+
+                    pass 
+                else: 
+                    object_elements_buffer.append(Paragraph(f"(Unhandled object structure for field '{field_name_display}')", style_body_small))
+
+                    object_produced_renderable_content = True 
+
+            if object_elements_buffer: 
+
+                current_section_elements_buffer.append(Paragraph(field_name_display, style_h3)) 
+                current_section_elements_buffer.extend(object_elements_buffer)
+                current_section_elements_buffer.append(Spacer(1, 0.05*inch)) 
+                section_has_renderable_content = True
+
+        if section_has_renderable_content: 
+            final_elements_for_pdf.append(Paragraph(sec_name, style_h2)) 
+            final_elements_for_pdf.extend(current_section_elements_buffer)
+            if section_idx < len(all_sections) - 1: 
+                final_elements_for_pdf.append(PageBreak())
 
     try:
-        if not final_elements_for_pdf or \
-           (len(final_elements_for_pdf) == 2 and isinstance(final_elements_for_pdf[0], Paragraph) and isinstance(final_elements_for_pdf[1], Spacer) and (section_set_view is None or not all_sections)):
-            final_elements_for_pdf = [Paragraph("No displayable content found in the XML after processing.", style_body)]
-        elif final_elements_for_pdf and isinstance(final_elements_for_pdf[-1], PageBreak):
-            final_elements_for_pdf.pop()
 
-        doc.build(final_elements_for_pdf,
-                  onFirstPage=_add_logo_on_every_page,
-                  onLaterPages=_add_logo_on_every_page)
-        return pdf_buffer.getvalue()
+        if not final_elements_for_pdf or \
+           (len(final_elements_for_pdf) <= 2 and all(isinstance(el, (Paragraph, Spacer)) for el in final_elements_for_pdf) and (section_set_view is None or not all_sections)): 
+            final_elements_for_pdf = [Paragraph(f"Report: {collection_name}", style_h1), Paragraph("No displayable content found in the XML after processing.", style_body)]
+        elif final_elements_for_pdf and isinstance(final_elements_for_pdf[-1], PageBreak): 
+            final_elements_for_pdf.pop() 
+
+        doc.build(final_elements_for_pdf)
+        return pdf_buffer.getvalue() 
     except Exception as e:
         print(f"PDF ERR: Final PDF building failed: {e}")
         import traceback; traceback.print_exc()
+
         error_buffer_final = io.BytesIO()
         try:
-            error_doc_elements = [Paragraph("FATAL ERROR: Could not build PDF.", style_h1), Paragraph(str(e), style_error)]
+            error_doc_elements = [Paragraph("FATAL ERROR: Could not build PDF.", style_h1), Paragraph(str(e), style_error), Preformatted(traceback.format_exc(), style_code)]
             error_doc_final = SimpleDocTemplate(error_buffer_final, pagesize=landscape(letter))
             error_doc_final.build(error_doc_elements) 
             return error_buffer_final.getvalue()
-        except Exception as final_err_build:
+        except Exception as final_err_build: 
             print(f"ERR: Could not even build the final error PDF: {final_err_build}")
             return None
