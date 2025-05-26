@@ -1,12 +1,11 @@
 import xml.etree.ElementTree as ET
 import base64
-import io 
+import io
 try:
     import openpyxl
 except ImportError:
     print("ERR: openpyxl missing. Install: <your_python_path> -m pip install openpyxl")
-
-    exit() 
+    exit()
 
 try:
     import docx
@@ -16,12 +15,23 @@ except ImportError:
 
 from reportlab.lib.pagesizes import letter, landscape
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, PageBreak, Preformatted
+# Add Image and ImageReader imports
+from reportlab.platypus import Image
+from reportlab.lib.utils import ImageReader # To get image dimensions for aspect ratio
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib import colors
 from reportlab.lib.units import inch
 import html
 import os
 import re
+
+# This global variable will hold the path to the logo
+LOGO_PATH = None
+
+# Function to allow app.py to set the logo path
+def set_pdf_logo_path(path):
+    global LOGO_PATH
+    LOGO_PATH = path
 
 HIERARCHY_TABLE_COLUMN_MAPPINGS = {}
 styles = getSampleStyleSheet()
@@ -34,6 +44,36 @@ style_body_small = ParagraphStyle(name='BodySmall', parent=styles['Normal'], fon
 style_code = ParagraphStyle(name='Code', parent=styles['Normal'], fontName='Courier', fontSize=7, leading=8, backColor=colors.HexColor(0xf0f0f0), borderColor=colors.lightgrey, borderWidth=0.5, borderPadding=3, spaceBefore=3, spaceAfter=3, leftIndent=0.1*inch)
 style_error = ParagraphStyle(name='Error', parent=styles['Normal'], textColor=colors.red)
 style_note = ParagraphStyle(name='Note', parent=styles['Normal'], fontSize=8, leading=9, textColor=colors.darkblue, fontName='Helvetica-Oblique')
+
+def _add_logo_on_every_page(canvas, doc):
+    if LOGO_PATH and os.path.exists(LOGO_PATH):
+        canvas.saveState()
+        try:
+            # Desired width for the logo (e.g., 1 inch)
+            desired_logo_width = 1.0 * inch
+
+            # Use ImageReader to get original dimensions and maintain aspect ratio
+            img_reader = ImageReader(LOGO_PATH)
+            orig_width, orig_height = img_reader.getSize()
+            aspect_ratio = float(orig_height) / float(orig_width)
+
+            img_width = desired_logo_width
+            img_height = desired_logo_width * aspect_ratio
+
+            # Get page dimensions (should be landscape(letter) as per your doc setup)
+            page_width, page_height = doc.pagesize
+
+            # Calculate position for top-right corner
+            # Position relative to the physical page edge, then move by margins
+            padding = 0.1 * inch # Small padding from the margin edge
+            x_position = page_width - doc.rightMargin - img_width - padding
+            y_position = page_height - doc.topMargin - img_height - padding
+
+            canvas.drawImage(LOGO_PATH, x_position, y_position,
+                             width=img_width, height=img_height, mask='auto')
+        except Exception as e:
+            print(f"WARN: Could not draw logo '{LOGO_PATH}' on PDF page: {e}")
+        canvas.restoreState()
 
 def load_column_mappings_from_schema_files(schema_file_paths_dict):
     global HIERARCHY_TABLE_COLUMN_MAPPINGS
@@ -381,23 +421,15 @@ def optimize_table_for_display(table_name, headers, rows, available_width, eleme
     return rendered_something
 
 def process_xml_to_pdf(xml_string_content, schema_files_config):
-    """
-    Processes an XML string content and generates a PDF in memory.
-
-    Args:
-        xml_string_content (str): The XML content as a string.
-        schema_files_config (dict): Configuration for schema files.
-
-    Returns:
-        bytes: The generated PDF content as bytes, or None if an error occurs.
-    """
+    
     load_column_mappings_from_schema_files(schema_files_config)
 
     pdf_buffer = io.BytesIO() 
 
     doc = SimpleDocTemplate(pdf_buffer, pagesize=landscape(letter),
                             leftMargin=0.5*inch, rightMargin=0.5*inch,
-                            topMargin=0.5*inch, bottomMargin=0.5*inch)
+                            topMargin=0.75*inch, # Increased top margin slightly if logo is close
+                            bottomMargin=0.5*inch)
     final_elements_for_pdf = []
 
     try:
@@ -684,13 +716,16 @@ def process_xml_to_pdf(xml_string_content, schema_files_config):
 
     try:
         if not final_elements_for_pdf or \
-           (len(final_elements_for_pdf) == 2 and isinstance(final_elements_for_pdf[0], Paragraph) and isinstance(final_elements_for_pdf[1], Spacer) and not all_sections): 
+           (len(final_elements_for_pdf) == 2 and isinstance(final_elements_for_pdf[0], Paragraph) and isinstance(final_elements_for_pdf[1], Spacer) and (section_set_view is None or not all_sections)):
             final_elements_for_pdf = [Paragraph("No displayable content found in the XML after processing.", style_body)]
-        elif final_elements_for_pdf and isinstance(final_elements_for_pdf[-1], PageBreak): 
+        elif final_elements_for_pdf and isinstance(final_elements_for_pdf[-1], PageBreak):
             final_elements_for_pdf.pop()
 
-        doc.build(final_elements_for_pdf)
-        return pdf_buffer.getvalue() 
+        # Pass the logo function to the build method
+        doc.build(final_elements_for_pdf,
+                  onFirstPage=_add_logo_on_every_page,
+                  onLaterPages=_add_logo_on_every_page)
+        return pdf_buffer.getvalue()
     except Exception as e:
         print(f"PDF ERR: Final PDF building failed: {e}")
         import traceback; traceback.print_exc()
@@ -699,7 +734,7 @@ def process_xml_to_pdf(xml_string_content, schema_files_config):
         try:
             error_doc_elements = [Paragraph("FATAL ERROR: Could not build PDF.", style_h1), Paragraph(str(e), style_error)]
             error_doc_final = SimpleDocTemplate(error_buffer_final, pagesize=landscape(letter))
-            error_doc_final.build(error_doc_elements)
+            error_doc_final.build(error_doc_elements) # Don't add logo to error page
             return error_buffer_final.getvalue()
         except Exception as final_err_build:
             print(f"ERR: Could not even build the final error PDF: {final_err_build}")
